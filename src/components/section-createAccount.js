@@ -6,22 +6,48 @@ class SectionCreateAccount extends React.Component{
     render() {
         return(
             <div className="Section-CreateAccount">
-                <form>                
-                    <div>
-                        <label>User name: </label>
-                        <input type="text" name="user_name" defaultValue=" "/>
+               <form>
+                    <div className="form-group row">
+                        <label htmlFor="inputName" className="col-sm-2 col-form-label">Name </label>
+                        <div className="col-sm-10">
+                        <input type="name" className="form-control" id="inputName" placeholder="Name" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Password: </label>
-                        <input type="text" name="password" defaultValue=" "/>
+                    <div className="form-group row">
+                        <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
+                        <div className="col-sm-10">
+                        <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
+                        </div>
                     </div>
 
-                    <div>
-                        <label>Confirm Password: </label>
-                        <input type="text" name="password" defaultValue=" "/>
+                    <div className="form-group row">
+                        <label htmlFor="inputUser" className="col-sm-2 col-form-label">User</label>
+                        <div className="col-sm-10">
+                        <input type="user" className="form-control" id="inputUser" placeholder="User" />
+                        </div>
                     </div>
-                </form>
+                  
+                    <div className="form-group row">
+                        <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>
+                        <div className="col-sm-10">
+                        <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
+                        </div>
+                    </div>
+
+                    <div className="form-group row">
+                        <label htmlFor="inputPassword1" className="col-sm-2 col-form-label">Confirm Password</label>
+                        <div className="col-sm-10">
+                        <input type="password" className="form-control" id="inputPassword1" placeholder="Password" />
+                        </div>
+                    </div>
+                    
+                    <div className="form-group row">
+                        <div className="col-sm-10">
+                        <button type="submit" className="btn btn-primary">Create Account</button>
+                        </div>
+                    </div>
+                    </form>
             </div>
         );
 
