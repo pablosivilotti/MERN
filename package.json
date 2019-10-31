@@ -1,38 +1,30 @@
 {
-  "name": "mytinerary",
-  "version": "0.1.0",
-  "private": true,
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Backend App",
+  "main": "server.js",
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "mdbreact": "^4.22.0",
-    "react": "^16.11.0",
-    "react-boostrap-carousel": "^3.0.0",
-    "react-bootstrap-carousel": "^4.0.1",
-    "react-dom": "^16.11.0",
-    "react-items-carousel": "^2.8.0",
-    "react-responsive-carousel": "^3.1.51",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "test",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "server": "nodemon server.js",
+    "start": "node server.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablosivilotti/MERN.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "author": "Pablo Sivilotti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pablosivilotti/MERN/issues"
+  },
+  "homepage": "https://github.com/pablosivilotti/MERN#readme"
 }
