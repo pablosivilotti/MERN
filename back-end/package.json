@@ -1,0 +1,30 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "Backend App",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "scripts": {
+    "test": "test",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "server": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablosivilotti/MERN.git"
+  },
+  "author": "Pablo Sivilotti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pablosivilotti/MERN/issues"
+  },
+  "homepage": "https://github.com/pablosivilotti/MERN#readme"
+}
