@@ -1,58 +1,59 @@
 const express = require('express');
-// const mongo = require('mongodb'), //el driver para poder conectar a mongodb
 const mongoose = require('mongoose'); //el cliente para poder realizar consultas.
-// const Schema = mongoose.Schema; //la clase que permite definir "esquemas" de documento
 const bodyParser = require('body-parser'); //middleware para poder codificar datos enviados por POST en formato urlencoded, y para poder enviar el payload como json
-
-//+srv://pablosivilotti:<INET-MERN>@mytinerary-sjs0f.mongodb.net/test?retryWrites=true&w=majority
-
-const City = require ('./City');
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+const CityCtrl = require ('./controlador/city')
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Bienvenido al Servidor' );
-});
+app.get('/api/city', CityCtrl.getCities)
+app.get('/api/city/:cityId', CityCtrl.getCity)
+app.post('/api/city/', CityCtrl.saveCity)
+app.put('/api/city/:cityId', CityCtrl.updateCity)
+app.delete('/api/city/:cityId', CityCtrl.deleteCity)
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
-app.get('/addCity', (req, res) => {
-    res.send({cities: []});
-});
-
-app.get('/front', (req, res) => {
-  res.sendFile(path.join(process.cwd(), '/frontEnd/public/index.html'));
-});
-
-app.post('/addCity', (req, res) => {
-  console.log('POST /addCity');
-  console.log(req.body);
-  
-  let city = new City()
-  city.name = req.body.name;
-  city.country = req.body.country;
-
-  city.save((err, cityStored) =>{
-    if (err) res.status(500).send({messaje: 'Error al guardar en la base de datos'})
+mongoose.connect('mongodb+srv://pablosivilotti:INET-MERN@mytinerary-sjs0f.mongodb.net/sprint2db?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true  })
+    .then(() => {
+        // Cuando se realiza la conexión, lanzamos este mensaje por consola
+        console.log("La conexión a la base de datos exitosa!")
     
-    res.status(200).send({city: cityStored})
-  })
-});
+        // CREAR EL SERVIDOR WEB CON NODEJS
+        app.listen(port, () => {
+            console.log("servidor corriendo en http://localhost:5000");
+        });
+    })
+    // Si no se conecta correctamente mostramos el error
+    .catch(err => console.log(err));
 
-// app.post('/addCity', (req, res) => {
-//   console.log(req.body);
-//   res.send(
-//     `I received your POST request. This is what you sent me: ${req.body.post}`,
-//   );
+
+
+// app.get('/', (req, res) => {
+//   res.send('Bienvenido al Servidor' );
 // });
 
-app.listen(port, () => console.log(`Listening SERVER on port ${port}`));
+// app.get('/api/hello', (req, res) => {
+//   res.send({ express: 'Hello From Express' });
+// });
 
-//module.exports = server;
+// app.get('/cities', (req, res) => {
+//   City.find({},(err, allCities) => {
+//     if (err) res.status(500).send({message: `Error relizar la consulta a la base de datos: ${err}`})
+//     if (!allCities) return res.status(404).send({message: 'No existen ciudades'})
+  
+//     res.send(200, { allCities });
+//   })
+  
+// });
+
+// app.get('/front', (req, res) => {
+//   res.sendFile(path.join(process.cwd(), '/frontEnd/public/index.html'));
+// });
+
+
+
+
