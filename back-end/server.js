@@ -1,34 +1,23 @@
-const express = require('express');
-const mongoose = require('mongoose'); //el cliente para poder realizar consultas.
-const bodyParser = require('body-parser'); //middleware para poder codificar datos enviados por POST en formato urlencoded, y para poder enviar el payload como json
+'use strict'
 
-const app = express();
+const mongoose = require('mongoose'); //el cliente para poder realizar consultas.
+const app = require('./app')
+const config = require('./config/config')
+
 const port = process.env.PORT || 5000;
 
-const CityCtrl = require ('./controlador/city')
-
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-app.get('/api/city', CityCtrl.getCities)
-app.get('/api/city/:cityId', CityCtrl.getCity)
-app.post('/api/city/', CityCtrl.saveCity)
-app.put('/api/city/:cityId', CityCtrl.updateCity)
-app.delete('/api/city/:cityId', CityCtrl.deleteCity)
-
-mongoose.connect('mongodb+srv://pablosivilotti:INET-MERN@mytinerary-sjs0f.mongodb.net/sprint2db?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true  })
+mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true  })
     .then(() => {
         // Cuando se realiza la conexión, lanzamos este mensaje por consola
         console.log("La conexión a la base de datos exitosa!")
     
         // CREAR EL SERVIDOR WEB CON NODEJS
-        app.listen(port, () => {
-            console.log("servidor corriendo en http://localhost:5000");
+        app.listen(config.port, () => {
+            console.log(`Servidor corriendo en http://localhost:${config.port}`);
         });
     })
     // Si no se conecta correctamente mostramos el error
-    .catch(err => console.log(err));
+    .catch(err => console.log('Error en la conexion a la base de datos : ' + err));
 
 
 

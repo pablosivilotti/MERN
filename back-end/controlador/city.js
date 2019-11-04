@@ -1,13 +1,15 @@
-const City = require ('./City');
+'use strict'
+
+const City = require ('../model/city');
 
 function getCity (req, res){
     let cityId = req.params.cityId
 
     City.findById(cityId, (err, city) => {
         if (err) res.status(500).send({message: `Error relizar la consulta a la base de datos: ${err}`})
-        if (!allCities) return res.status(404).send({message: 'No existen ciudades'})
+        if (!city) return res.status(404).send({message: 'No existen ciudades'})
     
-        res.send(200, { allCities });
+        res.send(200, { city });
 
     })
 }
@@ -59,7 +61,7 @@ function deleteCity(req, res){
     })
 }
 
-exports = {
+module.exports = {
     getCity,
     getCities,
     saveCity,
