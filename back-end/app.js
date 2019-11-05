@@ -8,7 +8,9 @@ const api = require('./routes/routes')
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
-app.use('/api',api)
+app.use('/',api)
+
+
 // app.get('/front', (req, res) =>{
 //     res.render('.')
 // })
