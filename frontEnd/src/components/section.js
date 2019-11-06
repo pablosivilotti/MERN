@@ -1,25 +1,23 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from './circled-right-2.png';
 import '../App.css';
-// import '../client/client'
-
-// import Links from './links';
+import '../client/client'
 
 
-class Section extends React.Component{
+class Section extends React.Component {
     render() {
-        return(
+        return (
             <div className="Section">
                 <p>
-                Find you perfect trip, designed by insiders who know and love their cities.
+                    Find you perfect trip, designed by insiders who know and love their cities.
                 </p>
                 <h2>
-                Start Browsing
+                    Start Browsing
                 </h2>
                 {/* <Link to={'./cities'}> */}
-                <Link to={'./cities-bd'}>
-                <img src={logo} className="App-logo" alt="logo" />
+                <Link to={'./cities-bd'}  >
+                    <img src={logo} className="App-logo" alt="logo" />
                 </Link>
             </div>
         );

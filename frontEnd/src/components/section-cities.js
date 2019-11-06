@@ -14,11 +14,11 @@ import city11 from '../img/11-Toronto-Canada.jpg';
 import city12 from '../img/12-Zurich-Suiza.jpg';
 import { Carousel } from 'react-responsive-carousel';
 
-class SectionCities extends React.Component{
-       
+class SectionCities extends React.Component {
+
     render() {
 
-        return(
+        return (
             <div className="Section-Cities">
                 <Carousel autoPlay>
                     <div>
@@ -40,7 +40,7 @@ class SectionCities extends React.Component{
                         <img src={city7} className="img-fluid" alt="city7" />
                         <p className="legend">Vancouver, Canada</p>
                     </div>
-                    
+
                     <div>
                         <img src={city8} className="img-fluid" alt="city8" />
                         <p className="legend">NuevaYork, USA</p>
@@ -81,6 +81,7 @@ class SectionCities extends React.Component{
                     </div>
 
                 </Carousel>
+
             </div>
         );
 
