@@ -4,6 +4,7 @@ import Home from './screen/home';
 import Login from './screen/login';
 import CreateAccount from './screen/crateAccount';
 import Cities from './screen/cities';
+import CitiesBD from './screen/cities-bd'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <Route path='/login' component={Login} />
     <Route path='/createAccount' component={CreateAccount} />
     <Route path='/cities' component={Cities} />
+    <Route path='/cities-bd' component={CitiesBD} />
 
     </Router >
 
