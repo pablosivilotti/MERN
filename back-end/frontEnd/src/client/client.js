@@ -35,7 +35,6 @@ class BackEndClient extends React.Component {
 
     render() {
 
-
         return (
             <div>
                 <Table className="table">
