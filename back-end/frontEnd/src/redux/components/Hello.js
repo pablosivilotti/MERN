@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { action1 } from '../actions/actions';
+// import { connect } from 'react-redux';
+// import { action1 } from '../actions/actions';
 
 class HelloWorld extends Component {
     // state = {}
@@ -14,7 +14,7 @@ class HelloWorld extends Component {
 
         return (
             <div>
-                <h1> Hello World! </h1>
+                <h1> Hello World with Redux! </h1>
             </div>
         );
     }
