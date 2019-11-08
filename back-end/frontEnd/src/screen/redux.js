@@ -2,9 +2,8 @@ import React from 'react';
 import Header from '../components/header';
 // import Section from '../components/section';
 // import Links from '../components/links';
-import HelloWorld from '../redux/components/Hello'
+import HelloRedux from '../redux/components/Hello'
 import Footer from '../components/footer';
-
 
 
 function Redux() {
@@ -15,7 +14,7 @@ function Redux() {
       <Header />
       {/* <Section />
       <Links /> */}
-      <HelloWorld />
+      <HelloRedux />
       <Footer />
 
 

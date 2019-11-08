@@ -1,13 +1,13 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import posts from './reducers/posts';
-import comments from './reducers/comments';
+import city from './reducers/city';
 
 const reducer = combineReducers({
-    posts,
-    comments,
+    city,
+    //otro_reducer,
 });
 
-const store = createStore(reducer, composeWithDevTools());
+const store = createStore(reducer, composeWithDevTools() , applyMiddleware(thunk));
 
 export default store;

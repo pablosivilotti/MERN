@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { action1 } from '../actions/actions';
+import { connect } from 'react-redux';
+import { addCity as addCityAction, getCities as getCitiesAction } from '../actions/cityActions'
 
-class HelloWorld extends Component {
-    // state = {}
+class HelloRedux extends Component {
+    state = {}
 
-    // componentDidMount() {
-    //     this.props.action1(777);
-    // }
+    componentDidMount() {
+        const { getCitiesAction} = this.props;
+
+        getCites();
+    }
 
     render() {
-        // console.log(this.props);
+        const {
+            city,
+            getCities,
+        } = this.props;
+
 
         return (
             <div>
@@ -20,13 +26,17 @@ class HelloWorld extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return state;
-// };
+const mapStateToProps = (state) => {
+    return {
+        city: state.city,
+        //otro_reducer: state.otro_reducer ,
+    };
+};
 
-// const mapDispatchToProps = {
-//     action1,
-// };
+const mapDispatchToProps = {
+    addCity: addCityAction,
+    getCities: getCitiesAction,
+};
 
-// export default connect(mapStateToProps, mapDispatchToProps)(HelloWorld);
-export default HelloWorld;
+export default connect(mapStateToProps, mapDispatchToProps)(HelloRedux);
+// export default HelloRedux;

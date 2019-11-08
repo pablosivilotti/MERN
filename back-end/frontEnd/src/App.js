@@ -5,7 +5,7 @@ import Login from "./screen/login";
 import CreateAccount from "./screen/crateAccount";
 import Cities from "./screen/cities";
 import CitiesBD from "./screen/cities-bd";
-import HelloWorld from "./screen/redux"
+import HelloRedux from "./screen/redux"
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/createAccount" component={CreateAccount} />
         <Route path="/cities" component={Cities} />
         <Route path="/cities-bd" component={CitiesBD} />
-        <Route path="/helloWorld" component={HelloWorld} />
+        <Route path="/helloRedux" component={HelloRedux} />
       </Router>
     </div>
   );
