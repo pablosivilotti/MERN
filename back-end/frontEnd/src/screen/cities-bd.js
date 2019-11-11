@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import BackEndClient from '../client/client'
+// import BackEndClient from '../client/client'
+import HelloRedux from '../redux/components/Hello'
 
 
 function CitiesBD() {
@@ -10,7 +11,8 @@ function CitiesBD() {
     <div className="CitiesBD">
 
       <Header />
-      <BackEndClient />
+      {/* <BackEndClient /> */}
+      <HelloRedux />
       {/* <Links /> */}
       <Footer />
 

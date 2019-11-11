@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCity as addCityAction, getCities as getCitiesAction } from '../actions/cityActions'
+import { addCityOK as addCityAction, getCities as getCitiesAction } from '../actions/cityActions'
+import api from '../../client/client'
 
 class HelloRedux extends Component {
     state = {}
 
     componentDidMount() {
-        const { getCitiesAction} = this.props;
-
-        getCites();
+        console.log(api.cities.get());
+        const { getCities } = this.props;
+        // console.log(getCitiesOK);
+        getCities();
     }
 
     render() {
         const {
-            city,
+            cities,
             getCities,
         } = this.props;
 
+        console.log(cities);
 
         return (
             <div>

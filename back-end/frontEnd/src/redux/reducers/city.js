@@ -1,12 +1,12 @@
 import { handleActions } from 'redux-actions';
-import { addCity, getCity } from '../actions/cityActions';
+import { addCityOK, getCitiesOK } from '../actions/cityActions';
 
 export default handleActions({
-   [addCity] : (state, action) => {
+   [addCityOK] : (state, action) => {
        return [...state, action.payload];
    },
 
-   [getCity] : (state, action) => {
+   [getCitiesOK] : (state, action) => {
        return action.payload;
    },
 }, []);

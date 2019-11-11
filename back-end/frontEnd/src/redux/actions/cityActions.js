@@ -1,16 +1,35 @@
 import { createAction } from 'redux-actions';
 import api from '../../client/client'
 
-export const addCity = createAction('addCity');
-export const getCities = createAction('getCities');
+export const addCityOK = createAction('addCityOK');
+export const getCitiesOK = createAction('getCitiesOK');
 // export const getCitiesERR = createAction('getCitiesERR');
 
-const getCities = () => {
+export const getCities = () => {
     return async (dispatch) => {
-        const response = await api.city.getCities();
-
-        getCities(response.data)
-
-        dispatch(getCities(response.data));
+        try {
+            
+            const response = await api.city.get();
+    
+            dispatch(getCitiesOK(response.data));
+       
+        } catch (error) {
+            console.log("ERROR EN LA ACCION GETCITIES")
+        } 
     };
 }
+
+export const addCity = (data) => {
+    return async (dispatch) => {
+        try {
+            
+            const response = await api.city.post(data);
+    
+            dispatch(addCityOK(response.data));
+       
+        } catch (error) {
+            console.log("ERROR EN LA ACCION ADDCITY")
+        } 
+    };
+}
+
