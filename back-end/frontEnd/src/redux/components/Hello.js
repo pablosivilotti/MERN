@@ -27,6 +27,9 @@ class HelloRedux extends React.Component {
         country: obj.country
       }));
       this.setState({ cities });
+
+      //dispatch set_cities
+
       console.log(cities);
     });
   }
@@ -48,6 +51,7 @@ class HelloRedux extends React.Component {
 
           <TableBody>
             {this.state.cities.map(function(city, index) {
+            // {this.props.cities.map(function(city, index) {
               return (
                 <TableRow key={index}>
                   <TableCell align="center">{city.id}</TableCell>
