@@ -6,17 +6,15 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-// import {
-//             addCityOK as addCityAction,
-//             getCities as getCitiesAction
-//         } from "../actions/cityActions";
+
 
 class HelloRedux extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: []
-    };
+      name: "",
+      country: ""
+    }
   }
 
   componentDidMount() {
@@ -27,18 +25,20 @@ class HelloRedux extends React.Component {
         country: obj.country
       }));
       this.setState({ cities });
-
       //dispatch set_cities
+      //this.props.dispatch(addCity(data))
 
       console.log(cities);
     });
   }
 
   render() {
- 
+
     return (
       <div>
         <h1> All Cities! </h1>
+
+
 
         <Table className="table">
           <TableHead>
@@ -50,8 +50,8 @@ class HelloRedux extends React.Component {
           </TableHead>
 
           <TableBody>
-            {this.state.cities.map(function(city, index) {
-            // {this.props.cities.map(function(city, index) {
+            {this.state.cities.map(function (city, index) {
+              // {this.props.cities.map(function(city, index) {
               return (
                 <TableRow key={index}>
                   <TableCell align="center">{city.id}</TableCell>

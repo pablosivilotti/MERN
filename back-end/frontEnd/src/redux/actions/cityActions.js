@@ -1,6 +1,16 @@
-export function addCity(payload) {
-  return {
-    type: "ADD_CITY",
-    payload
-  };
+const addCity = payload => ({
+  type: 'ADD_CITY',
+  payload: payload
+})
+
+
+const deleteCity = payload => ({
+  type: 'DELETE_CITY',
+  payload: payload
+})
+
+
+
+export {
+  addCity, deleteCity
 }

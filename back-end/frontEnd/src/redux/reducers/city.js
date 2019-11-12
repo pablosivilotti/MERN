@@ -1,4 +1,5 @@
-const cityReducer = (state = [], action) => {
+export default cityReducer = (state = [], action) => {
+    
     switch (action.type) {
         case 'ADD_city':
             return [...state,action.data]
@@ -18,7 +19,6 @@ const cityReducer = (state = [], action) => {
                 } else return city;
             })
         default:
-            return state;
+            return state;  //SIEMPRE TIENE QUE ESTAR
     }
 }
-export default cityReducer;

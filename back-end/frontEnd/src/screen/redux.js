@@ -4,6 +4,7 @@ import Header from '../components/header';
 // import Links from '../components/links';
 import HelloRedux from '../redux/components/Hello'
 import Footer from '../components/footer';
+import Options from '../components/options';
 
 
 function Redux() {
@@ -14,6 +15,7 @@ function Redux() {
       <Header />
       {/* <Section />
       <Links /> */}
+      <Options />
       <HelloRedux />
       <Footer />
 
