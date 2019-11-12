@@ -58,27 +58,27 @@ export default {
 
 //         return (
 //             <div>
-//                 <Table className="table">
-//                     <TableHead>
-//                         <TableRow>
-//                             <TableCell align="center"> Id </TableCell>
-//                             <TableCell align="center"> City </TableCell>
-//                             <TableCell align="center"> Country </TableCell>
-//                         </TableRow>
-//                     </TableHead>
-//                     <TableBody>
-//                         {this.state.cities.map(function (city, index) {
-//                             return (
-//                                 <TableRow key={index}>
-//                                     <TableCell align="center">{city.id}</TableCell>
-//                                     <TableCell align="center">{city.name}</TableCell>
-//                                     <TableCell align="center">{city.country}</TableCell>
-//                                 </TableRow>
-//                             )
-//                         })}
-//                     </TableBody>
+                // <Table className="table">
+                //     <TableHead>
+                //         <TableRow>
+                //             <TableCell align="center"> Id </TableCell>
+                //             <TableCell align="center"> City </TableCell>
+                //             <TableCell align="center"> Country </TableCell>
+                //         </TableRow>
+                //     </TableHead>
+                //     <TableBody>
+                //         {this.state.cities.map(function (city, index) {
+                //             return (
+                //                 <TableRow key={index}>
+                //                     <TableCell align="center">{city.id}</TableCell>
+                //                     <TableCell align="center">{city.name}</TableCell>
+                //                     <TableCell align="center">{city.country}</TableCell>
+                //                 </TableRow>
+                //             )
+                //         })}
+                //     </TableBody>
 
-//                 </Table>
+                // </Table>
                 
 //             </div>
 //         )}
