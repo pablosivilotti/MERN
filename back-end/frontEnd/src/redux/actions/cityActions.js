@@ -1,5 +1,5 @@
 const addCity = payload => ({
-  type: 'ADD_CITY',
+  type: 'ADD_city',
   payload: payload
 })
 
@@ -9,15 +9,15 @@ const deleteCity = payload => ({
   payload: payload
 })
 
-export function getData() {
-  return function(dispatch) {
-    return fetch("http://localhost:5000/cities")
-      .then(response => response.json())
-      .then(json => {
-        dispatch({ type: "DATA_LOADED", payload: json });
-      });
-  };
-}
+// export function getData() {
+//   return function(dispatch) {
+//     return fetch("http://localhost:5000/cities")
+//       .then(response => response.json())
+//       .then(json => {
+//         dispatch({ type: "DATA_LOADED", payload: json });
+//       });
+//   };
+// }
 
 
 export {

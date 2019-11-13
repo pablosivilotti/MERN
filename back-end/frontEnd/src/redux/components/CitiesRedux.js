@@ -1,49 +1,56 @@
 import React from "react";
 import axios from "axios";
+import Options from '../../components/options';
 import { connect } from "react-redux";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { getData } from "../actions/cityActions";
+import { addCity } from "../actions/cityActions";
 
 
 class HelloRedux extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   name: "",
-    //   country: ""
-    // }
-  }
-
-
-  componentDidMount() {
-    this.props.getData();
+    this.state = {
+      cities: []
+      //   name: "",
+      //   country: ""
+    }
   }
 
 
   // componentDidMount() {
-  //   axios.get("http://localhost:5000/cities").then(res => {
-  //     const cities = res.data.allCities.map(obj => ({
-  //       id: obj._id,
-  //       name: obj.name,
-  //       country: obj.country
-  //     }));
-  //     this.setState({ cities });
-  //     //dispatch set_cities
-  //     //this.props.dispatch(addCity(data))
-
-  //     console.log(cities);
-  //   });
+  //   this.props.getData();
   // }
 
+
+  componentDidMount() {
+    axios.get("http://localhost:5000/cities").then(res => {
+      const cities = res.data.allCities.map(obj => ({
+        id: obj._id,
+        name: obj.name,
+        country: obj.country
+      }));
+      // this.setState({ cities });
+      //dispatch addCity
+      this.props.dispatch(addCity(cities))
+
+      // console.log(cities);
+    });
+  }
+
   render() {
+    // console.log("this.props")
+    // console.log(this.props)
 
     return (
+
+
       <div>
-        <h1> All Cities! </h1>
+        <Options />
+        {/* <h1> All Cities! </h1> */}
 
         <Table className="table">
           <TableHead>
@@ -54,29 +61,30 @@ class HelloRedux extends React.Component {
             </TableRow>
           </TableHead>
 
-        <TableBody>
+          <TableBody>
             {/* {this.state.cities.map(function (city, index) { */}
-              {this.props.cities.map(function(city, index) {
+            {this.props.cities[0] && (this.props.cities[0].map(function (city) {
               return (
-                <TableRow key={index}>
+                <TableRow key={city._id}>
                   <TableCell align="center">{city.id}</TableCell>
                   <TableCell align="center">{city.name}</TableCell>
                   <TableCell align="center">{city.country}</TableCell>
                 </TableRow>
               );
-            })}
+            }))}
           </TableBody>
         </Table>
-            
+
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
+  // console.log("state")
+  // console.log(state)
   return {
-    // cities: state.cityReducer
-    cities: state.allCities
+    cities: state.city
     //otro_reducer: state.otro_reducer ,
   };
 };
@@ -86,5 +94,8 @@ const mapStateToProps = state => {
 //   getCities: getCitiesAction
 // };
 
-export default connect(mapStateToProps, { getData })(HelloRedux);
+export default connect(mapStateToProps)(HelloRedux);
 // export default HelloRedux;
+
+
+//filtrar con onChange filter antes del map
