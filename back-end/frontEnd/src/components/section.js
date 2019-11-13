@@ -16,7 +16,8 @@ class Section extends React.Component {
                     Start Browsing
                 </h2>
                 {/* <Link to={'./cities'}> */}
-                <Link to={'./cities-bd'}  >
+                {/* <Link to={'./cities-bd'}  > */}
+                <Link to={'./redux'}  >
                     <img src={logo} className="App-logo" alt="logo" />
                 </Link>
             </div>
