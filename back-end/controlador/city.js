@@ -1,16 +1,11 @@
 'use strict'
 
 const City = require ('../model/city');
-// const FrontEnd = require ('../frontEnd/public/index.html')
-
 
 function helloServer (req, res) {
   res.send('Bienvenido al Servidor' );
 }
 
-// function frontEnd (req,res){
-//     res.redirect(FrontEnd)
-// }
 
 function getCity (req, res){
     let cityId = req.params.cityId
@@ -71,7 +66,6 @@ function deleteCity(req, res){
 }
 
 module.exports = {
-    // frontEnd,
     helloServer,
     getCity,
     getCities,
