@@ -1,5 +1,5 @@
 const addCity = payload => ({
-  type: 'ADD_city',
+  type: 'ADD_CITY',
   payload: payload
 })
 

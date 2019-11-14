@@ -1,11 +1,11 @@
 const cityReducer = (state = [], action) => {
     
     switch (action.type) {
-        case 'ADD_city':
+        case 'ADD_CITY':
             // console.log("action.payload")
             // console.log(action.payload)
             return [...state,action.payload]
-        case 'DELETE_city':
+        case 'DELETE_CITY':
             return state.filter((city) => city.id !== action.id)
         // case 'EDIT_city':
         //     return state.map((city) => city.id === action.id ? { ...city, editing: !city.editing } : city)
