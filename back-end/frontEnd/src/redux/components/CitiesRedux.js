@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import Options from '../../components/options';
 import { connect } from "react-redux";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,17 +13,12 @@ class HelloRedux extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // cities: [],
-      search: ''
+      cities: [],
+      name: ''
     }
   }
 
-
-  // componentDidMount() {
-  //   this.props.getData();
-  // }
-
- async componentDidMount() {
+  async componentDidMount() {
     await axios.get("http://localhost:5000/cities").then(res => {
       const cities = res.data.allCities.map(obj => ({
         id: obj._id,
@@ -34,52 +28,48 @@ class HelloRedux extends React.Component {
       // this.setState({ cities });
       //dispatch addCity
       this.props.dispatch(addCity(cities))
-
-      // console.log(this.props.cities[0]);
-
-      
     });
   }
 
+  onChange2 = name => event => {
+    let value_ = name === ' '
+      ? event.target.files[0]
+      : event.target.value
 
-  filterCities(e) {
-    this.setState({ search: e.target.value.substr(0, 20) })
+    this.setState({ [name]: value_ })
+    console.log("onChange")
+    console.log(value_)
   }
 
-
   render() {
-    console.log("this.props")
-    console.log(this.props.cities[0]);
-    //LA PRIMERA VEZ QUE ENTRA NO ESTÁ COMPLETO EL ARRAY, POR ESO NO SE PUEDE USAR FILTER
-    // let filteredCities = this.props.cities[0].filter(
-    //   (city) => {
-    //     return city.name.indexOf(this.state.search) !== -1
-    //   }
-    // )
+
+    let state1 = this.state.name;
 
     return (
 
       <div>
-        
-        <Options />
-        {/* <h1> All Cities! </h1> */}
+
+        <form className="form-inline search" >
+          <input  className="form-control mr-sm-2" type="search" onChange={this.onChange2('name')} placeholder="Search cities" aria-label="Search" /*value={this.state.filterC} onChange2={console.log(this.state.filterC)}*/ />
+        </form>
 
         <Table className="table">
           <TableHead>
             <TableRow>
-              <TableCell align="center"> Id </TableCell>
+              {/* <TableCell align="center"> Id </TableCell> */}
               <TableCell align="center"> City </TableCell>
               <TableCell align="center"> Country </TableCell>
             </TableRow>
           </TableHead>
 
-          <TableBody>
-            {/* {filteredCities && (filteredCities.map(function (city) { */}
 
-            {this.props.cities[0] && (this.props.cities[0].map(function (city, index) {
+          <TableBody>
+            {this.props.cities[0] && (this.props.cities[0].filter(function (city) {
+              return city.name.toLowerCase().indexOf(state1.toLowerCase()) !== -1
+            }).map(function (city, index) {
               return (
                 <TableRow key={index}>
-                  <TableCell align="center">{city.id}</TableCell>
+                  {/* <TableCell align="center">{city.id}</TableCell> */}
                   <TableCell align="center">{city.name}</TableCell>
                   <TableCell align="center">{city.country}</TableCell>
                 </TableRow>
@@ -97,7 +87,7 @@ const mapStateToProps = state => {
   // console.log("state")
   // console.log(state)
   return {
-    cities: state.city
+    cities: state.CityReducer
     //otro_reducer: state.otro_reducer ,
   };
 };
@@ -109,6 +99,3 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(HelloRedux);
 // export default HelloRedux;
-
-
-//filtrar con onChange filter antes del map

@@ -1,12 +1,7 @@
 // import React from 'react';
 import axios from 'axios';
 import '../App.css';
-// import Table from '@material-ui/core/Table';
-// import TableBody from '@material-ui/core/TableBody';
-// import TableCell from '@material-ui/core/TableCell';
-// import TableHead from '@material-ui/core/TableHead';
-// import TableRow from '@material-ui/core/TableRow';
-
+// import { addCity } from "../redux/actions/cityActions";
 
 const requestHelper = axios.create({
     baseURL: 'http://localhost:5000',

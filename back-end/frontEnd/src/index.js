@@ -20,7 +20,3 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-//  github.com/gucompi ---> Repositorio Redux ABM Escuela
-//
-//  http://www.valentinog.com/blog/redux/
-//
