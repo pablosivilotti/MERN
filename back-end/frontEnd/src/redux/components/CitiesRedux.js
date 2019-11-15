@@ -7,6 +7,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { addCity } from "../actions/cityActions";
+import { Navbar, Form } from 'react-bootstrap'
+
 
 
 class HelloRedux extends React.Component {
@@ -49,9 +51,21 @@ class HelloRedux extends React.Component {
 
       <div>
 
-        <form className="form-inline search" >
-          <input  className="form-control mr-sm-2" type="search" onChange={this.onChange2('name')} placeholder="Search cities" aria-label="Search" /*value={this.state.filterC} onChange2={console.log(this.state.filterC)}*/ />
-        </form>
+        <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="./cities">Cities Album</Navbar.Brand>
+          {/* <Nav className="mr-auto">
+          <Nav.Link href="./cities">Cities Album</Nav.Link>
+
+          </Nav> */}
+          <Form inline>
+
+          {/* <form className="form-inline search" > */}
+            <input className="form-control mr-sm-2" type="search" onChange={this.onChange2('name')} placeholder="Search cities" aria-label="Search" /*value={this.state.filterC} onChange2={console.log(this.state.filterC)}*/ />
+          {/* </form> */}
+          </Form>
+
+        </Navbar>
+
 
         <Table className="table">
           <TableHead>
