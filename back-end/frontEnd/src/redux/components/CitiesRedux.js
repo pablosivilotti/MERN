@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import Options from '../../components/options';
 import { connect } from "react-redux";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,26 +7,21 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { addCity } from "../actions/cityActions";
+import { Navbar, Form } from 'react-bootstrap'
+
 
 
 class HelloRedux extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cities: []
-      //   name: "",
-      //   country: ""
+      cities: [],
+      name: ''
     }
   }
 
-
-  // componentDidMount() {
-  //   this.props.getData();
-  // }
-
-
-  componentDidMount() {
-    axios.get("http://localhost:5000/cities").then(res => {
+  async componentDidMount() {
+    await axios.get("http://localhost:5000/cities").then(res => {
       const cities = res.data.allCities.map(obj => ({
         id: obj._id,
         name: obj.name,
@@ -36,37 +30,60 @@ class HelloRedux extends React.Component {
       // this.setState({ cities });
       //dispatch addCity
       this.props.dispatch(addCity(cities))
-
-      // console.log(cities);
     });
   }
 
+  onChange2 = name => event => {
+    let value_ = name === ' '
+      ? event.target.files[0]
+      : event.target.value
+
+    this.setState({ [name]: value_ })
+    console.log("onChange")
+    console.log(value_)
+  }
+
   render() {
-    // console.log("this.props")
-    // console.log(this.props)
+
+    let state1 = this.state.name;
 
     return (
 
-
       <div>
-        <Options />
-        {/* <h1> All Cities! </h1> */}
+
+        <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="./cities">Cities Album</Navbar.Brand>
+          {/* <Nav className="mr-auto">
+          <Nav.Link href="./cities">Cities Album</Nav.Link>
+
+          </Nav> */}
+          <Form inline>
+
+          {/* <form className="form-inline search" > */}
+            <input className="form-control mr-sm-2" type="search" onChange={this.onChange2('name')} placeholder="Search cities" aria-label="Search" /*value={this.state.filterC} onChange2={console.log(this.state.filterC)}*/ />
+          {/* </form> */}
+          </Form>
+
+        </Navbar>
+
 
         <Table className="table">
           <TableHead>
             <TableRow>
-              <TableCell align="center"> Id </TableCell>
+              {/* <TableCell align="center"> Id </TableCell> */}
               <TableCell align="center"> City </TableCell>
               <TableCell align="center"> Country </TableCell>
             </TableRow>
           </TableHead>
 
+
           <TableBody>
-            {/* {this.state.cities.map(function (city, index) { */}
-            {this.props.cities[0] && (this.props.cities[0].map(function (city) {
+            {this.props.cities[0] && (this.props.cities[0].filter(function (city) {
+              return city.name.toLowerCase().indexOf(state1.toLowerCase()) !== -1
+            }).map(function (city, index) {
               return (
-                <TableRow key={city._id}>
-                  <TableCell align="center">{city.id}</TableCell>
+                <TableRow key={index}>
+                  {/* <TableCell align="center">{city.id}</TableCell> */}
                   <TableCell align="center">{city.name}</TableCell>
                   <TableCell align="center">{city.country}</TableCell>
                 </TableRow>
@@ -84,7 +101,7 @@ const mapStateToProps = state => {
   // console.log("state")
   // console.log(state)
   return {
-    cities: state.city
+    cities: state.CityReducer
     //otro_reducer: state.otro_reducer ,
   };
 };
@@ -96,6 +113,3 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(HelloRedux);
 // export default HelloRedux;
-
-
-//filtrar con onChange filter antes del map

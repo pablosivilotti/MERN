@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import city from './reducers/city';
+import CityReducer from './reducers/city';
 
 const reducer = combineReducers({
-    city,
+    CityReducer,
     //otro_reducer,
 });
 
