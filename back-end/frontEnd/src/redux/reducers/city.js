@@ -7,6 +7,8 @@ const cityReducer = (state = [], action) => {
             return [...state,action.payload]
         case 'DELETE_CITY':
             return state.filter((city) => city.id !== action.id)
+        case 'GET_CITY':
+            return action.payload
         // case 'EDIT_city':
         //     return state.map((city) => city.id === action.id ? { ...city, editing: !city.editing } : city)
         // case 'UPDATE':

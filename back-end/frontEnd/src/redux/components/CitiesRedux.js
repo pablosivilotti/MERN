@@ -6,7 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { addCity } from "../actions/cityActions";
+import { addCity, getCities } from "../actions/cityActions";
 import { Navbar, Form } from 'react-bootstrap'
 
 
@@ -21,16 +21,18 @@ class HelloRedux extends React.Component {
   }
 
   async componentDidMount() {
-    await axios.get("http://localhost:5000/cities").then(res => {
-      const cities = res.data.allCities.map(obj => ({
-        id: obj._id,
-        name: obj.name,
-        country: obj.country
-      }));
-      // this.setState({ cities });
-      //dispatch addCity
-      this.props.dispatch(addCity(cities))
-    });
+    // await axios.get("http://localhost:5000/cities").then(res => {
+    //   const cities = res.data.allCities.map(obj => ({
+    //     id: obj._id,
+    //     name: obj.name,
+    //     country: obj.country
+    //   }));
+    //   // this.setState({ cities });
+    //   //dispatch addCity
+    //   this.props.dispatch(addCity(cities))
+    // });
+
+    this.props.getCities()
   }
 
   onChange2 = name => event => {
@@ -111,5 +113,5 @@ const mapStateToProps = state => {
 //   getCities: getCitiesAction
 // };
 
-export default connect(mapStateToProps)(HelloRedux);
+export default connect(mapStateToProps, {getCities})(HelloRedux);
 // export default HelloRedux;
