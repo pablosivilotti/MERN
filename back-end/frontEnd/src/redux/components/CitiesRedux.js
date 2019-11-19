@@ -1,16 +1,6 @@
 import React from "react";
-// import axios from "axios";
 import { connect } from "react-redux";
-<<<<<<< HEAD
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import { addCity, getCities } from "../actions/cityActions";
-=======
-import { getCities } from "../actions/cityActions";
->>>>>>> Sprint_2
 import { Navbar, Form } from 'react-bootstrap'
 import List from '@material-ui/core/List';
 
@@ -25,24 +15,9 @@ class HelloRedux extends React.Component {
     }
   }
 
-<<<<<<< HEAD
   async componentDidMount() {
-    // await axios.get("http://localhost:5000/cities").then(res => {
-    //   const cities = res.data.allCities.map(obj => ({
-    //     id: obj._id,
-    //     name: obj.name,
-    //     country: obj.country
-    //   }));
-    //   // this.setState({ cities });
-    //   //dispatch addCity
-    //   this.props.dispatch(addCity(cities))
-    // });
-
+   
     this.props.getCities()
-=======
-  componentDidMount() {
-    this.props.getCities();
->>>>>>> Sprint_2
   }
 
   onChange2 = name => event => {
@@ -107,9 +82,5 @@ const mapStateToProps = (state) => {
 //   getCities: getCitiesAction
 // };
 
-<<<<<<< HEAD
 export default connect(mapStateToProps, {getCities})(HelloRedux);
-=======
-export default connect(mapStateToProps, { getCities })(HelloRedux);
->>>>>>> Sprint_2
 // export default HelloRedux;
