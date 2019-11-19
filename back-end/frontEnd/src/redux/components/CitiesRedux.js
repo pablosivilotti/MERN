@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addCity, getCities } from "../actions/cityActions";
+import { getCities } from "../actions/cityActions";
 import { Navbar, Form } from 'react-bootstrap'
 import List from '@material-ui/core/List';
 

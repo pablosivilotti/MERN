@@ -13,12 +13,9 @@ api.post('/city/', cityCtrl.saveCity)
 api.put('/city/:cityId', cityCtrl.updateCity)
 api.delete('/city/:cityId', cityCtrl.deleteCity)
 
-api.get('/', itineraryCtrl.helloServer)
-api.get('/cities', itineraryCtrl.getCities)
-api.get('/city/:cityId', itineraryCtrl.getCity)
-api.post('/city/', itineraryCtrl.saveCity)
-api.put('/city/:cityId', itineraryCtrl.updateCity)
-api.delete('/city/:cityId', itineraryCtrl.deleteCity)
+api.get('/itineraries', itineraryCtrl.getItineraries)
+api.get('/itinerary/:cityId', itineraryCtrl.getItinerary)
+api.post('/itinerary/', itineraryCtrl.saveItinerary)
 
 module.exports = api
 
