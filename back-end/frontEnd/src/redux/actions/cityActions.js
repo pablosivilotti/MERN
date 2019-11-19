@@ -1,11 +1,13 @@
 import axios from "axios";
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Sprint_2
 const addCity = payload => ({
   type: 'ADD_CITY',
   payload: payload
 })
-
 
 const deleteCity = payload => ({
   type: 'DELETE_CITY',
@@ -13,6 +15,7 @@ const deleteCity = payload => ({
 })
 
 function getCities() {
+<<<<<<< HEAD
   return (dispatch) => {
     axios.get("http://localhost:5000/cities").then(res => {
       const cities = res.data.allCities.map(obj => ({
@@ -26,6 +29,16 @@ function getCities() {
       })
 
     })
+=======
+  return (dispatch, getState) => {
+
+    if (getState().length > 0) return;
+
+    return axios.get('http://localhost:5000/cities')
+      .then((res) => {
+        dispatch({ type: 'GET_CITIES', payload: res.data.allCities })
+      })
+>>>>>>> Sprint_2
   }
 }
 
