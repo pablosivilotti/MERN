@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom'
 import { getCities } from "../actions/cityActions";
 import { Navbar, Form } from 'react-bootstrap'
 import List from '@material-ui/core/List';
+import '../../App.css'
 
-
-
-class HelloRedux extends React.Component {
+class CitiesRedux extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +37,7 @@ class HelloRedux extends React.Component {
 
       <div>
 
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className="Search">
           <Navbar.Brand href="./cities">Cities Album</Navbar.Brand>
           {/* <Nav className="mr-auto">
           <Nav.Link href="./cities">Cities Album</Nav.Link>
@@ -58,8 +57,8 @@ class HelloRedux extends React.Component {
           return city.name.toLowerCase().indexOf(state1.toLowerCase()) !== -1
         }).map(function (city, index) {
           return (
-            <List key={index}>
-              <Link to={'./itinerary'}>
+            <List className="List-cities" key={index}>
+              <Link to={'./itinerary'} className="Link-Cities">
                 {city.name + ", " + city.country}
               </Link>
             </List>
@@ -84,5 +83,6 @@ const mapStateToProps = (state) => {
 //   getCities: getCitiesAction
 // };
 
-export default connect(mapStateToProps, { getCities })(HelloRedux);
-// export default HelloRedux;
+
+export default connect(mapStateToProps, { getCities })(CitiesRedux);
+// export default CitiesRedux;

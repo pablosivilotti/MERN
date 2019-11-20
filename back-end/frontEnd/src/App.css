@@ -67,3 +67,23 @@
 .Section-Login, .Section-CreateAccount{
   margin: 15%;
 }
+
+.List-cities{
+  background: white;
+  border-left: 1rem solid #8a8a8a;
+  border-radius: 0.5rem;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
+  display: flex;
+  font-family: Helvetica;
+  justify-content: center;
+}
+
+.Link-Cities{
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* text-align: center; */
+}
+
+.Search{
+  justify-content: space-between;
+}
