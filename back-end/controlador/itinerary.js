@@ -4,37 +4,45 @@ const Itinerary = require ('../model/itinerary');
 
 
 function getItinerary (req, res){
-    let itineraryId = req.params.itineraryId
+    let itineraryId = req.params.cityId
 
-    Itinerary.findById(itineraryId, (err, itinerary) => {
+    Itinerary.find({"cityId" : `${itineraryId}`},(err, itinerary) => {
         if (err) res.status(500).send({message: `Error relizar la consulta a la base de datos: ${err}`})
-        if (!itinerary) return res.status(404).send({message: 'No existen ciudades'})
-    
+        if (!itinerary) return res.status(404).send({message: 'No existen itinerarios para la ciudad seleccionada '})
+       
         res.send(200, { itinerary });
     })
 }
 
 function getItineraries (req, res){
-    Itinerary.find({},(err, allItineraries) => {
+
+    Itinerary.find({},(err, Itineraries) => {
         if (err) res.status(500).send({message: `Error relizar la consulta a la base de datos: ${err}`})
-        if (!allItineraries) return res.status(404).send({message: 'No existen ciudades'})
-      
-        res.send(200, { allItineraries });
+        if (!Itineraries) return res.status(404).send({message: 'No existen itinerarios para la ciudad seleccionada'})
+       
+        res.send(200, { Itineraries });
     })
 }
+
 
 function saveItinerary(req, res){
     console.log('POST /Itineraries');
     console.log(req.body);
     
-    let Itinerary = new Itinerary()
-    Itinerary.name = req.body.name;
-    Itinerary.country = req.body.country;
+    let itinerary = new Itinerary()
+
+    itinerary.title = req.body.title;
+    itinerary.profilePic = req.body.profilePic;
+    itinerary.rating = req.body.rating;
+    itinerary.duration = req.body.duration;
+    itinerary.price = req.body.price;
+    itinerary.hashtag = req.body.hashtag;
+    itinerary.cityId = req.body.cityId;
   
-    Itinerary.save((err, ItineraryStored) =>{
+    itinerary.save((err, itineraryStored) =>{
       if (err) res.status(500).send({message: `Error al guardar en la base de datos: ${err}`})
       
-      res.status(200).send({Itinerary: ItineraryStored})
+      res.status(200).send({itinerary: itineraryStored})
     })
 }
 

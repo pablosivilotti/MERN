@@ -20,6 +20,9 @@ const ItinerarySchema = Schema({
     },
     hashtag: {
         type: Array
+    },
+    cityId: {
+        type: String
     }
 });
 

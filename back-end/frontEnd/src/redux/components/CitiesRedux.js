@@ -20,7 +20,7 @@ class CitiesRedux extends React.Component {
   }
 
   onChange2 = name => event => {
-    let value_ = name === ' '
+    let value_ = name === ''
       ? event.target.files[0]
       : event.target.value
 
@@ -39,23 +39,19 @@ class CitiesRedux extends React.Component {
 
         <Navbar bg="light" expand="lg" className="Search">
           <Navbar.Brand href="./cities">Cities Album</Navbar.Brand>
-          {/* <Nav className="mr-auto">
-          <Nav.Link href="./cities">Cities Album</Nav.Link>
 
-          </Nav> */}
           <Form inline>
-
-            {/* <form className="form-inline search" > */}
             <input className="form-control mr-sm-2" type="search" onChange={this.onChange2('name')} placeholder="Search cities" aria-label="Search" />
-            {/* </form> */}
           </Form>
-
         </Navbar>
-
 
         {this.props.cities[0] && (this.props.cities[0].filter(function (city) {
           return city.name.toLowerCase().indexOf(state1.toLowerCase()) !== -1
         }).map(function (city, index) {
+         
+          // let name = city.name + ", " + city.country
+          // console.log(name);
+
           return (
             <List className="List-cities" key={index}>
               <Link to={'./itinerary'} className="Link-Cities">
@@ -73,7 +69,8 @@ const mapStateToProps = (state) => {
   // console.log("state")
   // console.log(state)
   return {
-    cities: state.CityReducer
+    cities: state.cityReducer,
+    itineraries: state.itinerariesReducer
     //otro_reducer: state.otro_reducer ,
   };
 };
@@ -85,4 +82,3 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, { getCities })(CitiesRedux);
-// export default CitiesRedux;

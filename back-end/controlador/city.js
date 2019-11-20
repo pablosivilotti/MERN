@@ -17,7 +17,7 @@ function getCity (req, res){
 
     City.findById(cityId, (err, city) => {
         if (err) res.status(500).send({message: `Error relizar la consulta a la base de datos: ${err}`})
-        if (!city) return res.status(404).send({message: 'No existen ciudades'})
+        if (!city) return res.status(404).send({message: 'No existen ciudades ' + req.params})
     
         res.send(200, { city });
     })
