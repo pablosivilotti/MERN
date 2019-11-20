@@ -6,6 +6,7 @@ import CreateAccount from "./screen/crateAccount";
 import Cities from "./screen/cities";
 import CitiesBD from "./screen/cities-bd";
 import Redux from "./screen/redux";
+import Itinerary from "./screen/itinerary";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Route path="/createAccount" component={CreateAccount} />
         <Route path="/cities" component={Cities} />
         <Route path="/cities-bd" component={CitiesBD} />
-        <Route path="/redux" component={Redux} />
+        <Route path="/list-cities" component={Redux} />
+        <Route path="/itinerary" component={Itinerary} />
       </Router>
     </div>
   );

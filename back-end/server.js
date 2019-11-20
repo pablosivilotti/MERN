@@ -4,6 +4,7 @@ const mongoose = require('mongoose'); //el cliente para poder realizar consultas
 const app = require('./app')
 const config = require('./config/config')
 
+// const port = process.env.PORT || 5000;
 
 mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true  })
     .then(() => {
@@ -18,4 +19,6 @@ mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true  }
     // Si no se conecta correctamente mostramos el error
     .catch(err => console.log('Error en la conexion a la base de datos : ' + err));
 
-
+// app.get('/', (req, res) => {
+//   res.send('Bienvenido al Servidor' );
+// });

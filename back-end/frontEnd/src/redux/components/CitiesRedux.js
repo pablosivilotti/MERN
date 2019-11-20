@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom'
 import { getCities } from "../actions/cityActions";
 import { Navbar, Form } from 'react-bootstrap'
 import List from '@material-ui/core/List';
@@ -15,9 +16,8 @@ class HelloRedux extends React.Component {
     }
   }
 
-  async componentDidMount() {
-   
-    this.props.getCities()
+  componentDidMount() {
+    this.props.getCities();
   }
 
   onChange2 = name => event => {
@@ -54,15 +54,17 @@ class HelloRedux extends React.Component {
         </Navbar>
 
 
-          {this.props.cities[0] && (this.props.cities[0].filter(function (city) {
-            return city.name.toLowerCase().indexOf(state1.toLowerCase()) !== -1
-          }).map(function (city, index) {
-            return (
-              <List key={index}>
+        {this.props.cities[0] && (this.props.cities[0].filter(function (city) {
+          return city.name.toLowerCase().indexOf(state1.toLowerCase()) !== -1
+        }).map(function (city, index) {
+          return (
+            <List key={index}>
+              <Link to={'./itinerary'}>
                 {city.name + ", " + city.country}
-              </List>
-            );
-          }))}
+              </Link>
+            </List>
+          );
+        }))}
       </div>
     );
   }
@@ -82,5 +84,5 @@ const mapStateToProps = (state) => {
 //   getCities: getCitiesAction
 // };
 
-export default connect(mapStateToProps, {getCities})(HelloRedux);
+export default connect(mapStateToProps, { getCities })(HelloRedux);
 // export default HelloRedux;

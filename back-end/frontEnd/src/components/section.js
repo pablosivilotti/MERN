@@ -17,7 +17,7 @@ class Section extends React.Component {
                 </h2>
                 {/* <Link to={'./cities'}> */}
                 {/* <Link to={'./cities-bd'}  > */}
-                <Link to={'./redux'}  >
+                <Link to={'./list-cities'}  >
                     <img src={logo} className="App-logo" alt="logo" />
                 </Link>
             </div>

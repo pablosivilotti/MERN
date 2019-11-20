@@ -13,6 +13,8 @@ app.use(cors()) // Use this after the variable declaration
 app.use('/',api)
 
 
-
+// app.get('/front', (req, res) =>{
+//     res.render('.')
+// })
 
 module.exports = app
