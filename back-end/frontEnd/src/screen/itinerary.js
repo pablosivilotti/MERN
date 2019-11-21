@@ -1,48 +1,63 @@
 import React from 'react';
-import HeaderItinerary from '../components/header-Itinerary';
-import SectionItineraries from '../components/section-itinerary';
 import Footer from '../components/footer';
 import { connect } from "react-redux";
-import  {getItineraries}  from "../redux/actions/itineraryActions";
+import { getItineraries } from "../redux/actions/itineraryActions";
+import List from '@material-ui/core/List';
+
 
 
 class Itinerary extends React.Component {
-  
-  // componentDidMount() {
-  //   this.props.getItineraries(getState.match.params.cityId)
-  // }
 
-  render(){
-  
-  return (
+  async  componentDidMount() {
+    // console.log(this.props)
+    await this.props.getItineraries(this.props.match.params.cityId)
+  }
 
-    <div className="Redux">
+  render() {
+   
+    return (
 
-      <HeaderItinerary />
-      <SectionItineraries />
-      <Footer />
+      <div className="Redux">
 
-    </div>
-  );}
+        <h1>ITINERARY</h1>
+
+
+        {this.props.itineraryReducer[0] && (this.props.itineraryReducer[0])
+          .map(function (itineraries, index) {
+
+            return (
+
+                <List className="List-itineraries" key={index}>
+                  {itineraries.title + ", $" + itineraries.price}
+                  <br />
+                  {itineraries.duration + " Hs"}
+                  <br />
+                  {itineraries.rating + " pts"}
+                  <br />
+                  {itineraries.hashtag}
+                </List>
+
+            );
+          })}
+
+        <Footer />
+
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   // console.log("state")
   // console.log(state)
   return {
     // cities: state.cityReducer,
-    itinerary: state.itineraryReducer
+    itineraryReducer: state.itineraryReducer
     //otro_reducer: state.otro_reducer ,
   };
 };
 
-const mapDispatchToProps = (dispatch, getState) => {
-  console.log(getState)
-  console.log(getState.match.params.cityId)
-  return ({
-    getItineraries:() => dispatch(getItineraries(getState.match.params.cityId))
-  });
-};
 
 
-export default connect(mapStateToProps, mapDispatchToProps, getItineraries)(Itinerary);
+
+export default connect(mapStateToProps, { getItineraries })(Itinerary);

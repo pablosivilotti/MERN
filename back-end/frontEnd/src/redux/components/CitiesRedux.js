@@ -70,7 +70,7 @@ const mapStateToProps = (state) => {
   // console.log(state)
   return {
     cities: state.cityReducer,
-    Itineraries: state.itinerariesReducer
+    // Itineraries: state.itinerariesReducer
     //otro_reducer: state.otro_reducer ,
   };
 };

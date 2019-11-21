@@ -10,17 +10,18 @@ const deleteItinerary = payload => ({
   payload: payload
 })
 
-//  function getItineraries(cityId) {
-const getItineraries = (cityId) => {
-  console.log("ITINERARY ACTION")
-  console.log(cityId)
+function getItineraries(cityId) {
+// const getItineraries = (cityId) => {
+  // console.log("ITINERARY ACTION")
+  // console.log(cityId)
 
   return (dispatch, getState) => {
     if (getState().length > 0) return;
     
-    return axios.get(`http://localhost:5000/itineraries/:${cityId}`)
+    return axios.get(`http://localhost:5000/itineraries/${cityId}`)
       .then((res) => {
-        dispatch({ type: 'GET_ITINERARIES', payload: res.data.Itineraries })
+        dispatch({ type: 'GET_ITINERARIES', payload: res.data.itinerary })
+        // console.log(res.data.itinerary)
       })
   }
 }
