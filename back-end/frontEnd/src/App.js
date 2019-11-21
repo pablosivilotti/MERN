@@ -18,7 +18,7 @@ function App() {
         <Route path="/cities" component={Cities} />
         <Route path="/cities-bd" component={CitiesBD} />
         <Route path="/list-cities" component={Redux} />
-        <Route path="/itinerary" component={Itinerary} />
+        <Route path="/itineraries/:cityId" component={Itinerary} />
       </Router>
     </div>
   );

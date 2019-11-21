@@ -54,7 +54,7 @@ class CitiesRedux extends React.Component {
 
           return (
             <List className="List-cities" key={index}>
-              <Link to={'./itinerary'} className="Link-Cities">
+              <Link to={`./itineraries/${city._id}`} className="Link-Cities">
                 {city.name + ", " + city.country}
               </Link>
             </List>
@@ -70,7 +70,7 @@ const mapStateToProps = (state) => {
   // console.log(state)
   return {
     cities: state.cityReducer,
-    itineraries: state.itinerariesReducer
+    Itineraries: state.itinerariesReducer
     //otro_reducer: state.otro_reducer ,
   };
 };

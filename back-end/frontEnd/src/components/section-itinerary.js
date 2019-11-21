@@ -4,10 +4,15 @@ import '../App.css';
 
 
 class SectionItineraries extends React.Component {
+
+    componentDidMount() {
+      }
+    
+
     render() {
         return (
             <div className="Section">
-                <h1>Itineraries</h1>
+                    <h1>Itinerary</h1>
             </div>
         );
 
