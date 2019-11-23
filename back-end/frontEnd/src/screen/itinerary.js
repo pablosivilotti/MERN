@@ -22,7 +22,7 @@ class Itinerary extends React.Component {
         <h1>ITINERARY</h1>
 
 
-        {this.props.itineraryReducer[0] && (this.props.itineraryReducer[0])
+        {this.props.itineraryReducer[0] && this.props.itineraryReducer[0]
           .map(function (itineraries, index) {
 
             return (

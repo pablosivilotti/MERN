@@ -8,7 +8,7 @@ const itineraryReducer = (state = [], action) => {
         case 'DELETE_ITINERARY':
             return state.filter((itinerary) => itinerary.id !== action.id)
         case 'GET_ITINERARIES':
-            return [...state,action.payload]
+            return [action.payload]
         
         default:
             return state;  //SIEMPRE TIENE QUE ESTAR

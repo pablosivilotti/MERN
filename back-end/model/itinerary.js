@@ -1,11 +1,7 @@
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItinerarySchema = Schema({
-    name: {
-        type: String
-    },
     title: {
         type: String
     },
@@ -25,7 +21,8 @@ const ItinerarySchema = Schema({
         type: Array
     },
     cityId: {
-        type: String
+         type: Schema.Types.ObjectId,
+         ref: "City" 
     }
 });
 
