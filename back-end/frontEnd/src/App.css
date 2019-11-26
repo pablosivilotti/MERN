@@ -122,3 +122,11 @@
 .IMG-CITY-TITLE{
   width: 100%;
 }
+
+.titleItin {
+  background-color: lightgray;
+  color: darkslategrey;
+  margin-top: 15%;
+  width: 35%;
+  margin-left: 33%;
+}
