@@ -1,27 +1,27 @@
-// import React from 'react';
-import axios from 'axios';
-import '../App.css';
-// import { addCity } from "../redux/actions/cityActions";
+// // import React from 'react';
+// import axios from 'axios';
+// import '../App.css';
+// // import { addCity } from "../redux/actions/cityActions";
 
-const requestHelper = axios.create({
-    baseURL: 'http://localhost:5000',
-});
+// const requestHelper = axios.create({
+//     baseURL: 'http://localhost:5000',
+// });
 
 
-export default {
-    cities: {
-        get: () => requestHelper({
-            url: 'cities',
-            method: 'get',
-        }),
+// export default {
+//     cities: {
+//         get: () => requestHelper({
+//             url: 'cities',
+//             method: 'get',
+//         }),
 
-        create: data => requestHelper({
-            url: 'cities',
-            method: 'post',
-            data,
-        })
-    }
-}
+//         create: data => requestHelper({
+//             url: 'cities',
+//             method: 'post',
+//             data,
+//         })
+//     }
+// }
 
 //Separar la conexion con el Componente
 // class BackEndClient extends React.Component {

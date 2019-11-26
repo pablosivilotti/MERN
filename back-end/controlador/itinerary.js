@@ -34,8 +34,10 @@ function getItineraries(req, res) {
       });
     if (!Itineraries)
       return res.status(404).send({
-        message: "No existen itinerarios para la ciudad seleccionada"
-      });
+        message: "No existen itinerarios"
+      })
+      
+      res.send(200, { Itineraries });
   });
 }
 

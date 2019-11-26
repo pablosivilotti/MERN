@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card'
 // import Collapse from 'react-bootstrap/Collapse'
 import Accordion from 'react-bootstrap/Accordion'
 import Media from 'react-bootstrap/Media'
-import img1 from '../img/GaudiLover.png'
+// import img1 from '../img/GaudiLover.png'
 
 
 class Itinerary extends React.Component {
@@ -17,14 +17,19 @@ class Itinerary extends React.Component {
     await this.props.getItineraries(this.props.match.params.cityId)
   }
 
+  //LLAMAR A GETACTIVITY AL CLICKEAR EN VIEW ALL PARA MOSTRAR LAS IMAGENES
+
   render() {
 
     return (
 
       <div className="Redux">
 
-        {this.props.itineraryReducer[0] != null &&
-          <h1> {this.props.itineraryReducer[0][0].cityId.name} </h1>
+        {this.props.itineraryReducer[0] != null && 
+        <div> 
+          {/* <h1> {this.props.itineraryReducer[0][0].cityId.name} </h1> */}
+          <img src={`http://localhost:5000/city/image/${this.props.itineraryReducer[0][0].cityId.url}`} className="IMG-CITY-TITLE" alt="CITY"></img>
+        </div>
         }
 
         <h4 id="Availables-MYT"> Available MYtinerary: </h4>
@@ -38,7 +43,7 @@ class Itinerary extends React.Component {
                 <Media >
                   <img
                     className="rounded-circle"
-                    src={img1}
+                    src={`http://localhost:5000/city/image/${itineraries.profilePic}`}
                     alt="profile pic"
                   />
                   <Media.Body className="Media-Itin">
