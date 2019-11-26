@@ -6,30 +6,23 @@ const Itinerary = require("../model/itinerary");
 function getItinerary(req, res) {
   let itineraryId = req.params.cityId;
 
-  //   Itinerary.find({ cityId: `${itineraryId}` }, (err, itinerary) => {
-  //     if (err)
-  //       res
-  //         .status(500)
-  //         .send({
-  //           message: `Error relizar la consulta a la base de datos: ${err}`
-  //         });
-  //     if (!itinerary)
-  //       return res
-  //         .status(404)
-  //         .send({
-  //           message: "No existen itinerarios para la ciudad seleccionada "
-  //         });
-
-  //     res.send(200, { itinerary });
-  //   });
-
-  Itinerary.find({})
-    .populate("City")
-    .then(itinerarios => {
-      res.status(200).send({ itinerarios });
-    })
-    .catch(err => {
-      if (err) return 1;
+  Itinerary.find({ cityId: `${itineraryId}` }, (err, itinerary) => {
+    if (err)
+      res
+        .status(500)
+        .send({
+          message: `Error relizar la consulta a la base de datos: ${err}`
+        });
+    if (!itinerary)
+      return res
+        .status(404)
+        .send({
+          message: "No existen itinerarios para la ciudad seleccionada "
+        });
+    // res.send(200, { itinerary });
+  }).populate('cityId')
+    .then(itinerary => {
+      res.send(200, { itinerary });
     });
 }
 

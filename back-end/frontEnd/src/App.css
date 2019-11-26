@@ -87,3 +87,34 @@
 .Search{
   justify-content: space-between;
 }
+
+#Availables-MYT{
+  margin-top: 15%;
+  margin-bottom: 15%;
+  text-align: left;
+}
+
+.Img-ITY{
+  width: 25%;
+  /* margin-left: -75%; */
+}
+
+.Media-Itin{
+  text-align: left;
+  margin-left: 10%;
+}
+
+.Body-Card{
+  margin-left: 35%;
+  margin-top: -30%;
+}
+
+.ViewAllAccordion{
+  margin-left: 15%;
+}
+
+.rounded-circle{
+  width: 15%;
+  margin-left: 5%;
+  margin-top: 2%;
+}
