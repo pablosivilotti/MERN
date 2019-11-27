@@ -14,14 +14,21 @@ class Itinerary extends React.Component {
 
   async  componentDidMount() {
     await this.props.getItineraries(this.props.match.params.cityId)
+    await this.props.getActivity(this.props.itineraryReducer[0][0]._id)
   }
 
-  // async componentDidUpdate(){
-  //   await this.props.getActivity(this.props.itineraryReducer[0][0]._id)
-  // }
-  
+  async clicAccordion() {
+    // await this.props.getActivity(this.props.itineraryReducer[0][0]._id)
+    console.log("clic")
+    console.log(this)
+  }
+
+  async componentDidUpdate() {
+    // this.clicAccordion()
+  }
+
   render() {
-    
+
     console.log("this.props")
     console.log(this)
     return (
@@ -47,15 +54,15 @@ class Itinerary extends React.Component {
 
                 <Media >
                   <img
-                    className="rounded-circle"
+                    className="rounded-circle profile-pic"
                     src={`http://localhost:5000/city/image/${itineraries.profilePic}`}
                     alt="profile pic"
-                  />
+                  /> 
                   <Media.Body className="Media-Itin">
                     <h5>{itineraries.title}</h5>
                     <h6> {"Likes: " + itineraries.rating + "     " + itineraries.duration + " Hs       $" + itineraries.price} </h6>
                     <h6> {itineraries.hashtag} </h6>
-                    <Accordion defaultActiveKey="0" onClick={() => getActivity(itineraries._id)}/*onClick={() => this.handleClick()}*/>
+                    <Accordion defaultActiveKey="0" onClick={() => console.log("CLICC")}/*onClick={() => this.handleClick()}*/>
                       <Media.Body className="ViewAllAccordion" >
                         <Accordion.Toggle as={Media.Body} variant="link" eventKey="1"  >
                           {/* <Link to={`./city/activity/${itineraries._id}`}> v View All v</Link> */}
@@ -63,7 +70,14 @@ class Itinerary extends React.Component {
                        </Accordion.Toggle>
                       </Media.Body>
                       <Accordion.Collapse eventKey="1">
-                        <Media.Body>ACTIVITIES</Media.Body>
+                        <Media.Body>
+                          {/* ACTIVITIES */}
+                          <img
+                                className="rounded activity-pic"
+                                src={`http://localhost:5000/city/image/barcelonaBar.jpg`}
+                                alt="activity pic"
+                              />
+                        </Media.Body>
                       </Accordion.Collapse>
                     </Accordion>
                   </Media.Body>
@@ -87,8 +101,5 @@ const mapStateToProps = state => {
     //otro_reducer: state.otro_reducer ,
   };
 };
-
-
-
 
 export default connect(mapStateToProps, { getItineraries, getActivity })(Itinerary);
