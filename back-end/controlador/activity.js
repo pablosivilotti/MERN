@@ -20,7 +20,7 @@ function getActivity(req, res) {
                 });
     }).populate('itineraryId')
         .then(activity => {
-            res.send(200, { activity });
+            res.status(200).send({ activity });
         });
 }
 
@@ -36,7 +36,7 @@ function getActivities(req, res) {
                 message: "No existen actividades para la ciudad seleccionada"
             })
 
-            res.send(200, { Activities });
+            res.status(200).send({ Activities });
 
     });
 }

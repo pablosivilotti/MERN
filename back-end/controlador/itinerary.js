@@ -22,7 +22,7 @@ function getItinerary(req, res) {
     // res.send(200, { itinerary });
   }).populate('cityId')
     .then(itinerary => {
-      res.send(200, { itinerary });
+      res.status(200).send({ itinerary });
     });
 }
 
@@ -37,7 +37,7 @@ function getItineraries(req, res) {
         message: "No existen itinerarios"
       })
       
-      res.send(200, { Itineraries });
+      res.status(200).send({ Itineraries });
   });
 }
 

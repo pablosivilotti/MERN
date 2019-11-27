@@ -19,7 +19,7 @@ function getCity (req, res){
         if (err) res.status(500).send({message: `Error relizar la consulta a la base de datos: ${err}`})
         if (!city) return res.status(404).send({message: 'No existen ciudades ' + req.params})
     
-        res.send(200, { city });
+        res.status(200).send({ city });
     })
 }
 
@@ -28,7 +28,7 @@ function getCities (req, res){
         if (err) res.status(500).send({message: `Error relizar la consulta a la base de datos: ${err}`})
         if (!allCities) return res.status(404).send({message: 'No existen ciudades'})
       
-        res.send(200, { allCities });
+        res.status(200).send({ allCities });
     })
 }
 

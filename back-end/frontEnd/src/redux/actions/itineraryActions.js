@@ -16,12 +16,11 @@ function getItineraries(cityId) {
   // console.log(cityId)
 
   return (dispatch) => {
-    
     return axios.get(`http://localhost:5000/itineraries/${cityId}`)
       .then((res) => {
         dispatch({ type: 'GET_ITINERARIES', payload: res.data.itinerary })
-        // console.log("res.data.itinerary")
-        // console.log(res.data.itinerary)
+        console.log("res.data.itinerary")
+        console.log(res.data.itinerary)
       })
   }
 }

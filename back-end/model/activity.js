@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ActivitySchema = Schema({
     image: {
-        type: String
+        type: Array
     },
     itineraryId: {
         type: Schema.Types.ObjectId,
