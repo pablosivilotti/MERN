@@ -20,8 +20,8 @@ function getActivity(itineraryId) {
     return axios.get(`http://localhost:5000/city/activity/${itineraryId}`)
       .then((res) => {
         dispatch({ type: 'GET_ACTIVITY', payload: res.data.activity })
-        console.log("res.data")
-        console.log(res.data)
+        console.log("res.data.ACTIVITY")
+        console.log(res.data.activity)
       })
   }
 }

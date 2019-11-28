@@ -132,5 +132,9 @@
 }
 
 .activity-pic{
+  width: 10%;
+}
+
+.carousel-item{
   width: 50%;
 }
