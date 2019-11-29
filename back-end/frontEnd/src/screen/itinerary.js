@@ -10,15 +10,29 @@ import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
 import Media from 'react-bootstrap/Media'
 import Carousel from 'react-bootstrap/Carousel'
+import Expand from 'react-expand-animated';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
+
+
 
 
 class Itinerary extends React.Component {
 
-  async  componentDidMount() {
-    await this.props.getItineraries(this.props.match.params.cityId)
+  constructor(props) {
+    super(props)
+    this.state = {
+        open:false,
+        clicked: false,
+    }
+  };
+
+  componentDidMount() {
+    this.props.getItineraries(this.props.match.params.cityId)
   }
 
   clicAccordion(id) {
+    this.setState(() => ({ open: id, clicked: !this.state.clicked }));
     this.props.getActivity(id)
   }
 
@@ -59,30 +73,32 @@ class Itinerary extends React.Component {
                       <h5>{itineraries.title}</h5>
                       <h6> {"Likes: " + itineraries.rating + "     " + itineraries.duration + " Hs       $" + itineraries.price} </h6>
                       <h6> {itineraries.hashtag} </h6>
-                      <Media.Body className="ViewAllAccordion" onClick={() => that.clicAccordion(itineraries._id)}>
-                        <Accordion.Toggle as={Media.Body} variant="link" eventKey="0" >
-                          v View All v
-                       </Accordion.Toggle>
-                      </Media.Body>
-                      <Accordion.Collapse eventKey="0">
-                        <Media.Body>
-                          Activities
+                      <Media.Body  onClick={() => that.clicAccordion(itineraries._id)}>
+
+                      <Media.Body className="ViewAllAccordion" onClick={()=>{that.clicAccordion(itineraries._id)}}> View All </Media.Body>
+                        <Expand open={that.state.open===itineraries._id && that.state.clicked===true}>            
+                        <Carousel className="CarouselActivities">
                           {that.props.activityReducer[0] && that.props.activityReducer[0]
                             .map(function (activity, ind) {
                               return activity.image.map(img =>
-                                // <Carousel>
-                                //   <Carousel.Item >
-                                <div>
-                                  <img key={ind} className="d-block rounded activity-pic" src={`http://localhost:5000/city/image/${img}`} alt="activity pic" />
-                                </div>
-                                //   </Carousel.Item>
-                                // </Carousel>
+                                  <Carousel.Item >
+                                    <img key={ind} className="d-block rounded activity-pic" src={`http://localhost:5000/city/image/${img}`} alt="activity pic" />
+                                  <Carousel.Caption>
+                                  <h3 className="text-dark carouselCaption">{img}</h3>
+                                  </Carousel.Caption>
+                                  </Carousel.Item>
                               )
                             })}
-                            Comments
-                            
+                            </Carousel>
+                            <Form>
+                              <Form.Label>Comments</Form.Label>
+                              <Form.Control type="comment" placeholder="Your comment.." />
+                            </Form>
+                          <Button className="CloseActivities" onClick={()=>{that.clicAccordion(itineraries._id)}}> Close </Button>
+                          {/* <Media.Body onClick={()=>{that.clicAccordion(itineraries._id)}}> Close </Media.Body> */}
+                        </Expand>
+              
                         </Media.Body>
-                      </Accordion.Collapse>
                     </Media.Body>
                   </Media>
                 </Card>
