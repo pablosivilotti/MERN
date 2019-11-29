@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import logo from './circled-right-2.png';
 import '../App.css';
-import '../client/client'
+// import '../client/client'
 
 
 class Section extends React.Component {

@@ -132,9 +132,16 @@
 }
 
 .activity-pic{
-  width: 10%;
+  width: 50%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .carousel-item{
   width: 50%;
+}
+
+.CardItin{
+  margin-bottom: 10%;
+  border-width: thick;
 }
