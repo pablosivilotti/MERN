@@ -4,14 +4,16 @@ import Footer from '../components/footer';
 import SectionCities from '../components/section-cities';
 
 
+
 function Cities() {
   return (
 
     <div className="Cities">
 
       <Header />
+
+      
       <SectionCities />
-      {/* <Links /> */}
       <Footer />
 
 
@@ -19,4 +21,4 @@ function Cities() {
   );
 }
 
- export default Cities;
+export default Cities;

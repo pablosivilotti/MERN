@@ -13,6 +13,9 @@ import Carousel from 'react-bootstrap/Carousel'
 import Expand from 'react-expand-animated';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav'
+import { Navbar } from 'react-bootstrap'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 
 
@@ -45,6 +48,21 @@ class Itinerary extends React.Component {
     return (
 
       <div className="Redux">
+        <Navbar bg="light" variant="light">
+        <Nav.Item>
+          <Nav.Link href="/" > Home </Nav.Link>
+        </Nav.Item>
+        <Nav className="mr-auto">
+          <Nav.Link href="/list-cities" > Cities</Nav.Link>
+          <Nav.Item>
+            <Nav.Link href="/cities" > Album </Nav.Link>
+          </Nav.Item>
+          <NavDropdown title="Account" id="nav-dropdown">
+            <NavDropdown.Item href="/login" >Log in</NavDropdown.Item>
+            <NavDropdown.Item href="/createAccount" >Create Account</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar>
 
         {this.props.itineraryReducer[0] != null &&
           <Card>

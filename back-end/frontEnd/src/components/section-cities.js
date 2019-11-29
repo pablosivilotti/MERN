@@ -13,6 +13,9 @@ import city10 from '../img/10-Tokio-Japon.jpg';
 import city11 from '../img/11-Toronto-Canada.jpg';
 import city12 from '../img/12-Zurich-Suiza.jpg';
 import { Carousel } from 'react-responsive-carousel';
+import Nav from 'react-bootstrap/Nav'
+import { Navbar } from 'react-bootstrap'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 class SectionCities extends React.Component {
 
@@ -20,6 +23,23 @@ class SectionCities extends React.Component {
 
         return (
             <div className="Section-Cities">
+                <Navbar bg="light" variant="light">
+                    <Nav.Item>
+                        <Nav.Link href="/" > Home </Nav.Link>
+                    </Nav.Item>
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/list-cities" >List Cities</Nav.Link>
+                        <Nav.Item>
+                            <Nav.Link eventKey="disabled" disabled > Cities Album </Nav.Link>
+                        </Nav.Item>
+                        <NavDropdown title="Account" id="nav-dropdown">
+                            <NavDropdown.Item href="/login" >Log in</NavDropdown.Item>
+                            <NavDropdown.Item href="/createAccount" >Create Account</NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                </Navbar>
+
+
                 <Carousel autoPlay>
                     <div>
                         <img src={city1} className="img-fluid" alt="city1" />

@@ -10,6 +10,9 @@ class SectionCreateAccount extends React.Component {
     render() {
         return (
             <div className="Section-CreateAccount">
+
+
+
                 {/* <form>
                     <div className="form-group row">
                         <label htmlFor="inputName" className="col-sm-2 col-form-label">Name </label>
