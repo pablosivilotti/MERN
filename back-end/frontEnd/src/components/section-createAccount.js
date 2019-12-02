@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import axios from "axios";
+import urlServer from '../components/constans'
+
 
 
 
@@ -18,7 +20,8 @@ class SectionCreateAccount extends React.Component {
             password: "",
             email: "",
             firstName: "",
-            lastName: ""
+            lastName: "",
+            photo: ""
 
         };
 
@@ -44,17 +47,18 @@ class SectionCreateAccount extends React.Component {
             this.state.password === "" ||
             this.state.email === "" ||
             this.state.firstName === "" ||
-            this.state.lastName === ""
+            this.state.lastName === "" ||
+            this.state.photo === ""
         ) {
             e.preventDefault()
         }
         e.preventDefault();
 
-
-        // axios.get('http://localhost:5000/cuentas')
-        //     .then((res) => {
-        //         console.log(res)
-        //     })
+        //CREAR LA RUTA, POST Y COLLECTION
+        axios.get(`${urlServer.urlServer}/accounts`)
+            .then((res) => {
+                console.log(res)
+            })
     }
 
     render() {
@@ -64,10 +68,10 @@ class SectionCreateAccount extends React.Component {
 
                 <h4>Create Account</h4>
 
-                <Link to="#" className="AddPhotoCirc">
+                <Link to="#" className="AddPhotoCirc" >
                     Add Photo
                 </Link>
-                <Form>
+                <Form onSubmit={(e) => { this.handleForm(e) }}>
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridUsername">
                             <Form.Label>Username</Form.Label>
