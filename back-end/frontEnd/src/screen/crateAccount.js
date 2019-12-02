@@ -3,6 +3,7 @@ import Header from '../components/header';
 // import Section from './components/section';
 // import Links from '../components/links';
 import Footer from '../components/footer';
+import urlServer from '../components/constans'
 import SectionCreateAccount from '../components/section-createAccount';
 import Nav from 'react-bootstrap/Nav'
 import { Navbar } from 'react-bootstrap'
@@ -18,7 +19,7 @@ function CreateAccount() {
         <Navbar.Brand className="menu-brand">
           <img
             className="rounded-circle profile-pic-menu"
-            src={`http://localhost:5000/city/image/profilePic.jpg`}
+            src={`${urlServer.urlServer}/city/image/profilePic.jpg`}
             alt="profile pic"
           />
         </Navbar.Brand>

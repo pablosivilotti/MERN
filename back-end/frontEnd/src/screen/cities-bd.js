@@ -2,10 +2,11 @@ import React from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
 // import BackEndClient from '../client/client'
-import HelloRedux from '../redux/components/CitiesRedux'
+import Cities from '../redux/components/CitiesRedux'
 import Nav from 'react-bootstrap/Nav'
 import { Navbar } from 'react-bootstrap'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import urlServer from '../components/constans'
 
 
 function CitiesBD() {
@@ -18,7 +19,7 @@ function CitiesBD() {
         <Navbar.Brand className="menu-brand">
           <img
             className="rounded-circle profile-pic-menu"
-            src={`http://localhost:5000/city/image/profilePic.jpg`}
+            src={`${urlServer.urlServer}/city/image/profilePic.jpg`}
             alt="profile pic"
           />
         </Navbar.Brand>
@@ -43,7 +44,7 @@ function CitiesBD() {
         </Navbar.Collapse>
       </Navbar>
       {/* <BackEndClient /> */}
-      <HelloRedux />
+      <Cities />
       {/* <Links /> */}
       <Footer />
 

@@ -16,8 +16,7 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav'
 import { Navbar } from 'react-bootstrap'
 import NavDropdown from 'react-bootstrap/NavDropdown'
-
-
+import urlServer from '../components/constans'
 
 
 class Itinerary extends React.Component {
@@ -31,6 +30,7 @@ class Itinerary extends React.Component {
   };
 
   componentDidMount() {
+    // console.log(this.props)
     this.props.getItineraries(this.props.match.params.cityId)
   }
 
@@ -52,7 +52,7 @@ class Itinerary extends React.Component {
           <Navbar.Brand className="menu-brand">
             <img
               className="rounded-circle profile-pic-menu"
-              src={`http://localhost:5000/city/image/profilePic.jpg`}
+              src={`${urlServer.urlServer}/city/image/profilePic.jpg`}
               alt="profile pic"
             />
           </Navbar.Brand>
@@ -76,7 +76,7 @@ class Itinerary extends React.Component {
 
         {this.props.itineraryReducer[0] != null &&
           <Card>
-            <Card.Img src={`http://localhost:5000/city/image/${this.props.itineraryReducer[0][0].cityId.url}`} alt="Card image" />
+            <Card.Img src={`${urlServer.urlServer}/city/image/${this.props.itineraryReducer[0][0].cityId.url}`} alt="Card image" />
             <Card.ImgOverlay>
               <Card.Title className="titleItin">{this.props.itineraryReducer[0][0].cityId.name}</Card.Title>
             </Card.ImgOverlay>
@@ -94,7 +94,7 @@ class Itinerary extends React.Component {
                   <Media >
                     <img
                       className="rounded-circle profile-pic"
-                      src={`http://localhost:5000/city/image/${itineraries.profilePic}`}
+                      src={`${urlServer.urlServer}/city/image/${itineraries.profilePic}`}
                       alt="profile pic"
                     />
                     <Media.Body className="Media-Itin">
@@ -110,7 +110,7 @@ class Itinerary extends React.Component {
                               .map(function (activity, ind) {
                                 return activity.image.map(img =>
                                   <Carousel.Item >
-                                    <img key={ind} className="d-block rounded activity-pic" src={`http://localhost:5000/city/image/${img}`} alt="activity pic" />
+                                    <img key={ind} className="d-block rounded activity-pic" src={`${urlServer.urlServer}/city/image/${img}`} alt="activity pic" />
                                     <Carousel.Caption>
                                       <h3 className="text-dark carouselCaption">{img}</h3>
                                     </Carousel.Caption>

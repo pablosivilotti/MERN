@@ -33,6 +33,8 @@ class SectionCreateAccount extends React.Component {
         this.setState({
             [name]: value
         });
+
+        console.log(this.state)
     }
 
     handleForm(e) {
@@ -49,10 +51,10 @@ class SectionCreateAccount extends React.Component {
         e.preventDefault();
 
 
-        axios.get('http://localhost:5000/cuentas')
-            .then((res) => {
-                console.log(res)
-            })
+        // axios.get('http://localhost:5000/cuentas')
+        //     .then((res) => {
+        //         console.log(res)
+        //     })
     }
 
     render() {

@@ -1,4 +1,6 @@
 import axios from "axios";
+import urlServer from '../../components/constans'
+
 
 const addActivity = payload => ({
   type: 'ADD_ACTIVITY',
@@ -17,7 +19,7 @@ function getActivity(itineraryId) {
 
   return (dispatch) => {
     // console.log("RECOLECTANDO DATOS DE ACTIVIDADES")
-    return axios.get(`http://localhost:5000/city/activity/${itineraryId}`)
+    return axios.get(`${urlServer.urlServer}/city/activity/${itineraryId}`)
       .then((res) => {
         dispatch({ type: 'GET_ACTIVITY', payload: res.data.activity })
         // console.log("res.data.ACTIVITY")

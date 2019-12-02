@@ -1,4 +1,6 @@
 import axios from "axios";
+import urlServer from '../../components/constans'
+
 
 const addItinerary = payload => ({
   type: 'ADD_ITINERARY',
@@ -16,7 +18,7 @@ function getItineraries(cityId) {
   // console.log(cityId)
 
   return (dispatch) => {
-    return axios.get(`http://localhost:5000/itineraries/${cityId}`)
+    return axios.get(`${urlServer.urlServer}/itineraries/${cityId}`)
       .then((res) => {
         dispatch({ type: 'GET_ITINERARIES', payload: res.data.itinerary })
         // console.log("res.data.itinerary")

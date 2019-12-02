@@ -1,4 +1,6 @@
 import axios from "axios";
+import urlServer from '../../components/constans'
+
 
 const addCity = payload => ({
   type: 'ADD_CITY',
@@ -15,7 +17,7 @@ function getCities() {
 
     if (getState().length > 0) return;
 
-    return axios.get('http://localhost:5000/cities')
+    return axios.get(`${urlServer.urlServer}/cities`)
       .then((res) => {
         dispatch({ type: 'GET_CITIES', payload: res.data.allCities })
       })
