@@ -34,6 +34,7 @@ class SectionCreateAccount extends React.Component {
             [name]: value
         });
     }
+
     handleForm(e) {
         if (
             !this.state.terms ||
@@ -69,7 +70,8 @@ class SectionCreateAccount extends React.Component {
                         <Form.Group as={Col} controlId="formGridUsername">
                             <Form.Label>Username</Form.Label>
                             <Form.Control
-                                type="username"
+                                type="text"
+                                name="username"
                                 placeholder="username"
                                 value={this.state.username}
                                 onChange={this.handleInputChange}
@@ -80,6 +82,7 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
+                                name="password"
                                 placeholder="Password"
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
@@ -91,6 +94,7 @@ class SectionCreateAccount extends React.Component {
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             type="email"
+                            name="email"
                             placeholder="Enter email"
                             value={this.state.email}
                             onChange={this.handleInputChange}
@@ -102,6 +106,7 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>First Name</Form.Label>
                             <Form.Control
                                 type="text"
+                                name="firstName"
                                 placeholder="First Name"
                                 value={this.state.firstName}
                                 onChange={this.handleInputChange}
@@ -112,6 +117,7 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
                                 type="text"
+                                name="lastName"
                                 placeholder="Last Name"
                                 value={this.state.lastName}
                                 onChange={this.handleInputChange}
@@ -139,6 +145,7 @@ class SectionCreateAccount extends React.Component {
                     <Form.Group id="formGridCheckbox">
                         <Form.Check
                             type="checkbox"
+                            name="terms"
                             label="I agree to MYtinerary's"
                             checked={this.state.terms}
                             onChange={this.handleInputChange}
