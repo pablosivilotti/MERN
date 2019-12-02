@@ -2,10 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 import { getCities } from "../actions/cityActions";
-import { Navbar, Form } from 'react-bootstrap'
 import List from '@material-ui/core/List';
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Navbar, Form } from 'react-bootstrap'
+import FormControl from 'react-bootstrap/FormControl'
 import '../../App.css'
 
 class CitiesRedux extends React.Component {
@@ -38,23 +37,9 @@ class CitiesRedux extends React.Component {
     return (
 
       <div>
-
-        <Navbar bg="light" variant="light">
-          <Nav.Item>
-            <Nav.Link href="/" > Home </Nav.Link>
-          </Nav.Item>
-          <Nav className="mr-auto">
-            <Nav.Link eventKey="disabled" disabled >Cities</Nav.Link>
-            <Nav.Item>
-              <Nav.Link href="/cities" > Album </Nav.Link>
-            </Nav.Item>
-            <NavDropdown title="Account" id="nav-dropdown">
-              <NavDropdown.Item href="/login" >Log in</NavDropdown.Item>
-              <NavDropdown.Item href="/createAccount" >Create Account</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
+        <Navbar>
           <Form inline>
-            <input className="form-control mr-sm-2" type="search" onChange={this.onChange2('name')} placeholder="Search cities" aria-label="Search" />
+            <FormControl type="search" onChange={this.onChange2('name')} placeholder="Search cities" aria-label="Search" className="mr-sm-2 Search" />
           </Form>
         </Navbar>
 

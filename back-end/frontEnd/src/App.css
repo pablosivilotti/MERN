@@ -118,6 +118,13 @@
   margin-left: 5%;
   margin-top: 2%;
 }
+.profile-pic-menu{
+  width: 100%;
+}
+
+.menu-brand{
+  width: 10%;
+}
 
 .IMG-CITY-TITLE{
   width: 100%;
@@ -153,4 +160,18 @@
 .CloseActivities{
   margin-left: 20%;
   margin-top: 5%;
+}
+
+.AddPhotoCirc{
+  width: 8rem;
+	height: 8rem;
+	border-radius: 100%;
+/* 	background: red; */
+  border: 2px solid black;
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+  margin:0px auto;
+  /* padding:3% */
 }

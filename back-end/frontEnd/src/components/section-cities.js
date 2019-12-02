@@ -13,9 +13,7 @@ import city10 from '../img/10-Tokio-Japon.jpg';
 import city11 from '../img/11-Toronto-Canada.jpg';
 import city12 from '../img/12-Zurich-Suiza.jpg';
 import { Carousel } from 'react-responsive-carousel';
-import Nav from 'react-bootstrap/Nav'
-import { Navbar } from 'react-bootstrap'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+
 
 class SectionCities extends React.Component {
 
@@ -23,90 +21,74 @@ class SectionCities extends React.Component {
 
         return (
             <div className="Section-Cities">
-                <Navbar bg="light" variant="light">
-                    <Nav.Item>
-                        <Nav.Link href="/" > Home </Nav.Link>
-                    </Nav.Item>
-                    <Nav className="mr-auto">
-                        <Nav.Link href="/list-cities" >List Cities</Nav.Link>
-                        <Nav.Item>
-                            <Nav.Link eventKey="disabled" disabled > Cities Album </Nav.Link>
-                        </Nav.Item>
-                        <NavDropdown title="Account" id="nav-dropdown">
-                            <NavDropdown.Item href="/login" >Log in</NavDropdown.Item>
-                            <NavDropdown.Item href="/createAccount" >Create Account</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                </Navbar>
 
+                    <Carousel autoPlay>
+                        <div>
+                            <img src={city1} className="img-fluid" alt="city1" />
+                            <p className="legend">Berlin, Alemania</p>
+                        </div>
 
-                <Carousel autoPlay>
-                    <div>
-                        <img src={city1} className="img-fluid" alt="city1" />
-                        <p className="legend">Berlin, Alemania</p>
-                    </div>
+                        <div>
+                            <img src={city2} className="img-fluid" alt="city2" />
+                            <p className="legend">Brujas, Belgica</p>
+                        </div>
 
-                    <div>
-                        <img src={city2} className="img-fluid" alt="city2" />
-                        <p className="legend">Brujas, Belgica</p>
-                    </div>
+                        <div>
+                            <img src={city4} className="img-fluid" alt="city4" />
+                            <p className="legend">Dublin, Irlanda</p>
+                        </div>
 
-                    <div>
-                        <img src={city4} className="img-fluid" alt="city4" />
-                        <p className="legend">Dublin, Irlanda</p>
-                    </div>
+                        <div>
+                            <img src={city7} className="img-fluid" alt="city7" />
+                            <p className="legend">Vancouver, Canada</p>
+                        </div>
 
-                    <div>
-                        <img src={city7} className="img-fluid" alt="city7" />
-                        <p className="legend">Vancouver, Canada</p>
-                    </div>
+                        <div>
+                            <img src={city8} className="img-fluid" alt="city8" />
+                            <p className="legend">NuevaYork, USA</p>
+                        </div>
 
-                    <div>
-                        <img src={city8} className="img-fluid" alt="city8" />
-                        <p className="legend">NuevaYork, USA</p>
-                    </div>
+                        <div>
+                            <img src={city3} className="img-fluid" alt="city3" />
+                            <p className="legend">Copenhague, Dinamarca</p>
+                        </div>
 
-                    <div>
-                        <img src={city3} className="img-fluid" alt="city3" />
-                        <p className="legend">Copenhague, Dinamarca</p>
-                    </div>
+                        <div>
+                            <img src={city5} className="img-fluid" alt="city5" />
+                            <p className="legend">Ginebra, Suiza</p>
+                        </div>
 
-                    <div>
-                        <img src={city5} className="img-fluid" alt="city5" />
-                        <p className="legend">Ginebra, Suiza</p>
-                    </div>
+                        <div>
+                            <img src={city6} className="img-fluid" alt="city6" />
+                            <p className="legend">Lisboa, Portugal</p>
+                        </div>
+                        <div>
+                            <img src={city9} className="img-fluid" alt="city9" />
+                            <p className="legend">Phuket, Tailandia</p>
+                        </div>
 
-                    <div>
-                        <img src={city6} className="img-fluid" alt="city6" />
-                        <p className="legend">Lisboa, Portugal</p>
-                    </div>
-                    <div>
-                        <img src={city9} className="img-fluid" alt="city9" />
-                        <p className="legend">Phuket, Tailandia</p>
-                    </div>
+                        <div>
+                            <img src={city10} className="img-fluid" alt="city10" />
+                            <p className="legend">Tokio, Japon</p>
+                        </div>
 
-                    <div>
-                        <img src={city10} className="img-fluid" alt="city10" />
-                        <p className="legend">Tokio, Japon</p>
-                    </div>
+                        <div>
+                            <img src={city11} className="img-fluid" alt="city11" />
+                            <p className="legend">Toronto, Canada</p>
+                        </div>
 
-                    <div>
-                        <img src={city11} className="img-fluid" alt="city11" />
-                        <p className="legend">Toronto, Canada</p>
-                    </div>
+                        <div>
+                            <img src={city12} className="img-fluid" alt="city12" />
+                            <p className="legend">Zurich, Suiza</p>
+                        </div>
 
-                    <div>
-                        <img src={city12} className="img-fluid" alt="city12" />
-                        <p className="legend">Zurich, Suiza</p>
-                    </div>
-
-                </Carousel>
+                    </Carousel>
 
             </div>
-        );
-
-    }
-}
-
-export default SectionCities;
-
+                );
+        
+            }
+        }
+        
+        export default SectionCities;
+        

@@ -1,5 +1,9 @@
 import React from 'react';
 import '../App.css';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom'
+
 
 
 class SectionLogin extends React.Component {
@@ -7,28 +11,37 @@ class SectionLogin extends React.Component {
         return (
 
             <div className="Section-Login">
-                
-                <form>
-                    <div className="form-group row">
-                        <label htmlFor="inputEmail3" className="col-sm-2 col-form-label"><strong>  Email  </strong></label>
-                        <div className="col-sm-10">
-                            <input type="email" className="form-control" id="inputEmail" placeholder=" Email" />
-                        </div>
-                    </div>
 
-                    <div className="form-group row">
-                        <label htmlFor="inputPassword3" className="col-sm-2 col-form-label"><strong>  Password  </strong></label>
-                        <div className="col-sm-10">
-                            <input type="password" className="form-control" id="inputPassword" placeholder=" Password" />
-                        </div>
-                    </div>
+                <h4>Login</h4>
 
-                    <div className="form-group row">
-                        <div className="col-sm-10">
-                            <button type="submit" className="btn btn-primary">Sign in</button>
-                        </div>
-                    </div>
-                </form>
+
+                <Form>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>  Username  </Form.Label>
+                        <Form.Control type="email" placeholder=" username" />
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check type="checkbox" label="Remember me" />
+                    </Form.Group>
+                    <Button variant="outline-secondary" type="submit">
+                        OK
+                    </Button>
+                </Form>
+
+                <br />
+                <p>
+                    Don't have a MYtinerary account yet?
+                    You should create one! It's totally free and only takes  a minute
+                </p>
+
+                <Link to={'/createAccount'}  >
+                    Create Account
+                </Link>
             </div>
         );
 

@@ -3,107 +3,153 @@ import '../App.css';
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
+import axios from "axios";
 
 
 
 class SectionCreateAccount extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            terms: false,
+            username: "",
+            password: "",
+            email: "",
+            firstName: "",
+            lastName: ""
+
+        };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+    handleForm(e) {
+        if (
+            !this.state.terms ||
+            this.state.username === "" ||
+            this.state.password === "" ||
+            this.state.email === "" ||
+            this.state.firstName === "" ||
+            this.state.lastName === ""
+        ) {
+            e.preventDefault()
+        }
+        e.preventDefault();
+
+
+        axios.get('http://localhost:5000/cuentas')
+            .then((res) => {
+                console.log(res)
+            })
+    }
+
     render() {
+
         return (
             <div className="Section-CreateAccount">
 
+                <h4>Create Account</h4>
 
-
-                {/* <form>
-                    <div className="form-group row">
-                        <label htmlFor="inputName" className="col-sm-2 col-form-label">Name </label>
-                        <div className="col-sm-10">
-                        <input type="name" className="form-control" id="inputName" placeholder="Name" />
-                        </div>
-                    </div>
-
-                    <div className="form-group row">
-                        <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
-                        <div className="col-sm-10">
-                        <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
-                        </div>
-                    </div>
-
-                    <div className="form-group row">
-                        <label htmlFor="inputUser" className="col-sm-2 col-form-label">User</label>
-                        <div className="col-sm-10">
-                        <input type="user" className="form-control" id="inputUser" placeholder="User" />
-                        </div>
-                    </div>
-                  
-                    <div className="form-group row">
-                        <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>
-                        <div className="col-sm-10">
-                        <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
-                        </div>
-                    </div>
-
-                    <div className="form-group row">
-                        <label htmlFor="inputPassword1" className="col-sm-2 col-form-label">Confirm Password</label>
-                        <div className="col-sm-10">
-                        <input type="password" className="form-control" id="inputPassword1" placeholder="Password" />
-                        </div>
-                    </div>
-                    
-                    <div className="form-group row">
-                        <div className="col-sm-10">
-                        <button type="submit" className="btn btn-primary">Create Account</button>
-                        </div>
-                    </div>
-                    </form> */}
+                <Link to="#" className="AddPhotoCirc">
+                    Add Photo
+                </Link>
                 <Form>
                     <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Group as={Col} controlId="formGridUsername">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control
+                                type="username"
+                                placeholder="username"
+                                value={this.state.username}
+                                onChange={this.handleInputChange}
+                            />
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridPassword">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleInputChange}
+                            />
                         </Form.Group>
                     </Form.Row>
 
-                    <Form.Group controlId="formGridAddress1">
-                        <Form.Label>Address</Form.Label>
-                        <Form.Control placeholder="1234 Main St" />
-                    </Form.Group>
-
-                    <Form.Group controlId="formGridAddress2">
-                        <Form.Label>Address 2</Form.Label>
-                        <Form.Control placeholder="Apartment, studio, or floor" />
+                    <Form.Group controlId="formGridEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Enter email"
+                            value={this.state.email}
+                            onChange={this.handleInputChange}
+                        />
                     </Form.Group>
 
                     <Form.Row>
-                        <Form.Group as={Col} controlId="formGridCity">
-                            <Form.Label>City</Form.Label>
-                            <Form.Control />
+                        <Form.Group as={Col} controlId="formGridFirstname">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="First Name"
+                                value={this.state.firstName}
+                                onChange={this.handleInputChange}
+                            />
                         </Form.Group>
 
+                        <Form.Group as={Col} controlId="formGridLastname">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Last Name"
+                                value={this.state.lastName}
+                                onChange={this.handleInputChange}
+                            />
+                        </Form.Group>
+                    </Form.Row>
+
+                    <Form.Row>
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>State</Form.Label>
                             <Form.Control as="select">
                                 <option>Choose...</option>
-                                <option>...</option>
+                                <option>España</option>
+                                <option>Belgica</option>
+                                <option>Suiza</option>
+                                <option>Dinamarca</option>
+                                <option>Alemania</option>
+                                <option>Irlanda</option>
+                                <option>USA</option>
+                                <option>Japon</option>
                             </Form.Control>
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridZip">
-                            <Form.Label>Zip</Form.Label>
-                            <Form.Control />
                         </Form.Group>
                     </Form.Row>
 
                     <Form.Group id="formGridCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                        <Form.Check
+                            type="checkbox"
+                            label="I agree to MYtinerary's"
+                            checked={this.state.terms}
+                            onChange={this.handleInputChange}
+                        />
+                        <Link to="#">
+                            Terms & Conditions
+                        </Link>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">
-                        Submit
+                    <Button variant="outline-secondary" type="submit">
+                        OK
                     </Button>
                 </Form>
             </div>
