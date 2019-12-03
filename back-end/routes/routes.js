@@ -5,6 +5,7 @@ const cityCtrl = require('../controlador/city')
 const itineraryCtrl = require('../controlador/itinerary')
 const imagesCtrl = require('../controlador/imgCity'); 
 const activityCtrl = require('../controlador/activity'); 
+const accountCtrl = require('../controlador/account'); 
 
 const api = express.Router()
 
@@ -25,6 +26,8 @@ api.get('/city/image/:cityId?',imagesCtrl.getImgCity)
 api.get('/city/activity/:itineraryId?',activityCtrl.getActivity)
 api.get('/activities', activityCtrl.getActivities)
 api.post('/activities/', activityCtrl.saveActivity)
+
+api.post('/accounts/', accountCtrl.saveAccount)
 
 
 

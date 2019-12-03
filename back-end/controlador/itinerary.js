@@ -1,7 +1,6 @@
 "use strict";
 
 const Itinerary = require("../model/itinerary");
-//const City = require("../model/city");
 
 function getItinerary(req, res) {
   let itineraryId = req.params.cityId;

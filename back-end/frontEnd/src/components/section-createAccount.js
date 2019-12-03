@@ -4,10 +4,8 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import axios from "axios";
-import urlServer from '../components/constans'
-
-
+import { connect } from "react-redux";
+import { addAccount } from "../redux/actions/accountActions";
 
 
 class SectionCreateAccount extends React.Component {
@@ -36,8 +34,7 @@ class SectionCreateAccount extends React.Component {
         this.setState({
             [name]: value
         });
-
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     handleForm(e) {
@@ -54,11 +51,9 @@ class SectionCreateAccount extends React.Component {
         }
         e.preventDefault();
 
-        //CREAR LA RUTA, POST Y COLLECTION
-        axios.get(`${urlServer.urlServer}/accounts`)
-            .then((res) => {
-                console.log(res)
-            })
+        this.props.addAccount(this.state)
+
+ 
     }
 
     render() {
@@ -77,7 +72,7 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>Username</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="username"
+                                required name="username"
                                 placeholder="username"
                                 value={this.state.username}
                                 onChange={this.handleInputChange}
@@ -88,7 +83,7 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                name="password"
+                                required name="password"
                                 placeholder="Password"
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
@@ -100,7 +95,7 @@ class SectionCreateAccount extends React.Component {
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             type="email"
-                            name="email"
+                            required name="email"
                             placeholder="Enter email"
                             value={this.state.email}
                             onChange={this.handleInputChange}
@@ -112,7 +107,7 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>First Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="firstName"
+                                required name="firstName"
                                 placeholder="First Name"
                                 value={this.state.firstName}
                                 onChange={this.handleInputChange}
@@ -123,7 +118,7 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                name="lastName"
+                                required name="lastName"
                                 placeholder="Last Name"
                                 value={this.state.lastName}
                                 onChange={this.handleInputChange}
@@ -151,7 +146,7 @@ class SectionCreateAccount extends React.Component {
                     <Form.Group id="formGridCheckbox">
                         <Form.Check
                             type="checkbox"
-                            name="terms"
+                            required name="terms"
                             label="I agree to MYtinerary's"
                             checked={this.state.terms}
                             onChange={this.handleInputChange}
@@ -160,10 +155,11 @@ class SectionCreateAccount extends React.Component {
                             Terms & Conditions
                         </Link>
                     </Form.Group>
-
+                    {/* <Link to="/login"> */}
                     <Button variant="outline-secondary" type="submit">
                         OK
                     </Button>
+                    {/* </Link> */}
                 </Form>
             </div>
         );
@@ -171,4 +167,13 @@ class SectionCreateAccount extends React.Component {
     }
 }
 
-export default SectionCreateAccount;
+const mapStateToProps = (state) => {
+    // console.log("state")
+    // console.log(state)
+    return {
+      accounts: state.accountReducer,
+    };
+  };
+
+// export default SectionCreateAccount;
+export default connect(mapStateToProps, { addAccount })(SectionCreateAccount);
