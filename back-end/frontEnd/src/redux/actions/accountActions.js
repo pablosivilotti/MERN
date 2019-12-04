@@ -11,7 +11,7 @@ function addAccount(data) {
           dispatch({ type: 'ADD_ACCOUNT', payload: res.data.account })
           console.log("CUENTA AGREGADA")
         })
-        .catch(err => alert('Error al agregar la cuenta : CUENTA YA REGISTRADA '));
+        .catch(err => alert('Error al intentar crear la cuenta!'+ err));
 
     }
 }

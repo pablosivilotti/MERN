@@ -7,6 +7,9 @@ const imagesCtrl = require('../controlador/imgCity');
 const activityCtrl = require('../controlador/activity'); 
 const accountCtrl = require('../controlador/account'); 
 
+const { check, validationResult } = require('express-validator');
+
+
 const api = express.Router()
 
 api.get('/', cityCtrl.helloServer)
@@ -26,7 +29,8 @@ api.get('/city/activity/:itineraryId?',activityCtrl.getActivity)
 api.get('/activities', activityCtrl.getActivities)
 api.post('/activities/', activityCtrl.saveActivity)
 
-api.post('/accounts/', accountCtrl.saveAccount)
+api.post('/accounts/', [check('email', 'Invalid Email adress').isEmail(),
+                        check('password','Password must be min 5 characters').isLength({ min: 5 })],accountCtrl.saveAccount)
 
 
 
