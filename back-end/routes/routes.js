@@ -9,7 +9,6 @@ const accountCtrl = require('../controlador/account');
 
 const api = express.Router()
 
-
 api.get('/', cityCtrl.helloServer)
 api.get('/cities', cityCtrl.getCities)
 api.get('/city/:cityId', cityCtrl.getCity)

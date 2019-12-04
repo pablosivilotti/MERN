@@ -19,6 +19,4 @@ mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true  }
     // Si no se conecta correctamente mostramos el error
     .catch(err => console.log('Error en la conexion a la base de datos : ' + err));
 
-// app.get('/', (req, res) => {
-//   res.send('Bienvenido al Servidor' );
-// });
+mongoose.set('useCreateIndex', true);

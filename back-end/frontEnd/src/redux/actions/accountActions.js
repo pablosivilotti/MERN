@@ -2,15 +2,17 @@ import axios from "axios";
 import urlServer from '../../components/constans'
 
 function addAccount(data) {
-    return (dispatch, getState) => {
+    return async(dispatch, getState) => {
   
       if (getState().length > 0) return;
 
-      return axios.post(`${urlServer.urlServer}/accounts`,data)
+      return await axios.post(`${urlServer.urlServer}/accounts`,data)
         .then((res) => {
           dispatch({ type: 'ADD_ACCOUNT', payload: res.data.account })
           console.log("CUENTA AGREGADA")
         })
+        .catch(err => alert('Error al agregar la cuenta : CUENTA YA REGISTRADA '));
+
     }
 }
 const deleteAccount = payload => ({

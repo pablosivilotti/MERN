@@ -6,22 +6,26 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { addAccount } from "../redux/actions/accountActions";
+import urlServer from '../components/constans'
 
+
+const initialState = {
+    terms: false,
+    username: "",
+    password: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    country: "",
+    photo: ""
+
+};
 
 class SectionCreateAccount extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            terms: false,
-            username: "",
-            password: "",
-            email: "",
-            firstName: "",
-            lastName: "",
-            photo: ""
-
-        };
+        this.state = initialState;
 
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -45,6 +49,7 @@ class SectionCreateAccount extends React.Component {
             this.state.email === "" ||
             this.state.firstName === "" ||
             this.state.lastName === "" ||
+            this.state.country === "" ||
             this.state.photo === ""
         ) {
             e.preventDefault()
@@ -53,7 +58,8 @@ class SectionCreateAccount extends React.Component {
 
         this.props.addAccount(this.state)
 
- 
+        this.setState(initialState)
+
     }
 
     render() {
@@ -63,16 +69,20 @@ class SectionCreateAccount extends React.Component {
 
                 <h4>Create Account</h4>
 
-                <Link to="#" className="AddPhotoCirc" >
-                    Add Photo
-                </Link>
                 <Form onSubmit={(e) => { this.handleForm(e) }}>
+                    <Link to="#" >
+                        {/* Add Photo */}
+                        <img src={`${urlServer.urlServer}/city/image/addPhoto.jpg`}
+                            className="rounded-circle createAccountPhoto" alt="createAccountPhoto" />
+                    </Link>
+
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridUsername">
                             <Form.Label>Username</Form.Label>
                             <Form.Control
                                 type="text"
-                                required name="username"
+                                required
+                                name="username"
                                 placeholder="username"
                                 value={this.state.username}
                                 onChange={this.handleInputChange}
@@ -83,7 +93,8 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                required name="password"
+                                required
+                                name="password"
                                 placeholder="Password"
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
@@ -95,7 +106,8 @@ class SectionCreateAccount extends React.Component {
                         <Form.Label>Email</Form.Label>
                         <Form.Control
                             type="email"
-                            required name="email"
+                            required
+                            name="email"
                             placeholder="Enter email"
                             value={this.state.email}
                             onChange={this.handleInputChange}
@@ -107,7 +119,8 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>First Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                required name="firstName"
+                                required
+                                name="firstName"
                                 placeholder="First Name"
                                 value={this.state.firstName}
                                 onChange={this.handleInputChange}
@@ -118,7 +131,8 @@ class SectionCreateAccount extends React.Component {
                             <Form.Label>Last Name</Form.Label>
                             <Form.Control
                                 type="text"
-                                required name="lastName"
+                                required
+                                name="lastName"
                                 placeholder="Last Name"
                                 value={this.state.lastName}
                                 onChange={this.handleInputChange}
@@ -129,16 +143,23 @@ class SectionCreateAccount extends React.Component {
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridState">
                             <Form.Label>State</Form.Label>
-                            <Form.Control as="select">
+                            <Form.Control as="select"
+                                type="text"
+                                required
+                                name="country"
+                                value={this.state.country}
+                                onChange={this.handleInputChange}
+                            >
                                 <option>Choose...</option>
-                                <option>España</option>
-                                <option>Belgica</option>
-                                <option>Suiza</option>
-                                <option>Dinamarca</option>
                                 <option>Alemania</option>
+                                <option>Argentina</option>
+                                <option>Belgica</option>
+                                <option>Dinamarca</option>
+                                <option>España</option>
                                 <option>Irlanda</option>
-                                <option>USA</option>
                                 <option>Japon</option>
+                                <option>Suiza</option>
+                                <option>USA</option>
                             </Form.Control>
                         </Form.Group>
                     </Form.Row>
@@ -146,11 +167,13 @@ class SectionCreateAccount extends React.Component {
                     <Form.Group id="formGridCheckbox">
                         <Form.Check
                             type="checkbox"
-                            required name="terms"
+                            required
+                            name="terms"
                             label="I agree to MYtinerary's"
                             checked={this.state.terms}
                             onChange={this.handleInputChange}
                         />
+
                         <Link to="#">
                             Terms & Conditions
                         </Link>
@@ -171,9 +194,9 @@ const mapStateToProps = (state) => {
     // console.log("state")
     // console.log(state)
     return {
-      accounts: state.accountReducer,
+        accounts: state.accountReducer,
     };
-  };
+};
 
 // export default SectionCreateAccount;
 export default connect(mapStateToProps, { addAccount })(SectionCreateAccount);

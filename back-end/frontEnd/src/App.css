@@ -175,3 +175,9 @@
   margin:0px auto;
   /* padding:3% */
 }
+
+.createAccountPhoto{
+width: 40%;
+border: 2px solid black;
+
+}
