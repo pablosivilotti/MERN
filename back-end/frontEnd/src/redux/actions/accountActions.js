@@ -10,6 +10,7 @@ function addAccount(data) {
         .then((res) => {
           dispatch({ type: 'ADD_ACCOUNT', payload: res.data.account })
           console.log("CUENTA AGREGADA")
+          console.log(res.data.account)
         })
         .catch(err => alert('Error al intentar crear la cuenta!'+ err));
 

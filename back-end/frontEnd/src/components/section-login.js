@@ -3,10 +3,55 @@ import '../App.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import { postLogin } from "../redux/actions/loginActions";
 
+const initialState = {
+    remember: false,
+    username: "",
+    password: "",
+};
 
 
 class SectionLogin extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = initialState;
+    
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+    
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+            [name]: value
+        });
+
+        console.log(this.state)
+    }
+    
+    handleForm(e) {
+        if (
+            !this.state.remember ||
+            this.state.username === "" ||
+            this.state.password === "" 
+            
+        ) {
+            e.preventDefault()
+        }
+        e.preventDefault();
+    
+        // this.props.addAccount(this.state)
+    
+        // this.setState(initialState)
+    
+    }
+   
+   
     render() {
         return (
 
@@ -14,19 +59,38 @@ class SectionLogin extends React.Component {
 
                 <h4>Login</h4>
 
-
-                <Form>
+                <Form onSubmit={(e) => { this.handleForm(e) }}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>  Username  </Form.Label>
-                        <Form.Control type="email" placeholder=" username" />
+                        <Form.Control
+                            type="email"
+                            required
+                            name="username"
+                            placeholder="username"
+                            value={this.state.username}
+                            onChange={this.handleInputChange} 
+                         />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control
+                            type="password"
+                            required
+                            name="password"
+                            placeholder="Password"
+                            value={this.state.password}
+                            onChange={this.handleInputChange} 
+                        />
                     </Form.Group>
                     <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Remember me" />
+                        <Form.Check
+                            type="checkbox" 
+                            label="Remember me"
+                            name="remember"
+                            checked={this.state.remember}
+                            onChange={this.handleInputChange} 
+                         />
                     </Form.Group>
                     <Button variant="outline-secondary" type="submit">
                         OK
@@ -48,4 +112,12 @@ class SectionLogin extends React.Component {
     }
 }
 
-export default SectionLogin;
+const mapStateToProps = (state) => {
+    // console.log("state")
+    // console.log(state)
+    return {
+        login: state.loginReducer,
+    };
+};
+
+export default connect(mapStateToProps, { postLogin })(SectionLogin);

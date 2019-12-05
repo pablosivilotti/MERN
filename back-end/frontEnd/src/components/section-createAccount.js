@@ -198,5 +198,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-// export default SectionCreateAccount;
 export default connect(mapStateToProps, { addAccount })(SectionCreateAccount);

@@ -2,7 +2,6 @@ const Account = require('../model/account');
 const { check, validationResult } = require('express-validator');
 
 
-
 function saveAccount(req, res) {
   console.log('POST /accounts');
   console.log(req.body);
