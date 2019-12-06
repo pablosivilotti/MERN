@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { login } from "../redux/actions/accountActions";
+import { GoogleLogin } from 'react-google-login';
+
 
 const initialState = {
     remember: false,
@@ -12,46 +14,49 @@ const initialState = {
     password: "",
 };
 
+const responseGoogle = (response) => {
+    console.log(response);
+}
 
 class SectionLogin extends React.Component {
-    
+
     constructor(props) {
         super(props);
         this.state = initialState;
-    
+
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-    
+
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-    
+
         this.setState({
             [name]: value
         });
 
         // console.log(this.state)
     }
-    
+
     handleForm(e) {
         if (
             !this.state.remember ||
             this.state.email === "" ||
-            this.state.password === "" 
-            
+            this.state.password === ""
+
         ) {
             e.preventDefault()
         }
         e.preventDefault();
-    
+
         this.props.login(this.state)
-    
+
         // this.setState(initialState)
-    
+
     }
-   
-   
+
+
     render() {
         return (
 
@@ -68,8 +73,8 @@ class SectionLogin extends React.Component {
                             name="email"
                             placeholder="username"
                             value={this.state.email}
-                            onChange={this.handleInputChange} 
-                         />
+                            onChange={this.handleInputChange}
+                        />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
@@ -80,17 +85,17 @@ class SectionLogin extends React.Component {
                             name="password"
                             placeholder="Password"
                             value={this.state.password}
-                            onChange={this.handleInputChange} 
+                            onChange={this.handleInputChange}
                         />
                     </Form.Group>
                     <Form.Group controlId="formBasicCheckbox">
                         <Form.Check
-                            type="checkbox" 
+                            type="checkbox"
                             label="Remember me"
                             name="remember"
                             checked={this.state.remember}
-                            onChange={this.handleInputChange} 
-                         />
+                            onChange={this.handleInputChange}
+                        />
                     </Form.Group>
                     <Button variant="outline-secondary" type="submit">
                         OK
@@ -106,6 +111,14 @@ class SectionLogin extends React.Component {
                 <Link to={'/createAccount'}  >
                     Create Account
                 </Link>
+                <br/><br/>
+                <GoogleLogin
+                    clientId="971727407159-ekg7rovft8dug07rp59iipn76sdvjiqm.apps.googleusercontent.com"
+                    buttonText="Login with Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={'single_host_origin'}
+                />
             </div>
         );
 
