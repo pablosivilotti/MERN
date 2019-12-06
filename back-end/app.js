@@ -5,10 +5,12 @@ const bodyParser = require('body-parser') //middleware para poder codificar dato
 const app = express()
 const api = require('./routes/routes')
 const cors = require('cors')
+const passport = require('./controlador/passport')
 // const expressValidator = require('express-validator')
 
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
+// app.use(passport.initialize());
 
 app.use(cors()) // Use this after the variable declaration
 // app.use(expressValidator())

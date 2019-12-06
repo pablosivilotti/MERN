@@ -49,7 +49,7 @@ function login(data) {
         dispatch({ type: 'ADD_ACCOUNT', payload: res.data.account })
         
         console.log("Login exitoso")
-        console.log(res.data.account)
+        console.log(res.data)
       })
       .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
 

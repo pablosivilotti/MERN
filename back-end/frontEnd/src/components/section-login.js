@@ -15,6 +15,7 @@ const initialState = {
 };
 
 const responseGoogle = (response) => {
+    console.log("Response Google");
     console.log(response);
 }
 

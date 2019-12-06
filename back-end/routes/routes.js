@@ -34,9 +34,9 @@ api.post('/accounts/', [check('email', 'Invalid Email adress').isEmail(),
                         check('password','Password must be min 5 characters').isLength({ min: 5 })],accountCtrl.saveAccount)
 
 api.post('/login/', [check('email', 'Invalid Email adress').isEmail(),
-                        check('password','Password must be min 5 characters').isLength({ min: 5 })],accountCtrl.login)
+                    check('password','Password must be min 5 characters').isLength({ min: 5 })],accountCtrl.login)
 
-
+api.get('/loginGoogle', accountCtrl.loginGoogle)
 
 module.exports = api
 

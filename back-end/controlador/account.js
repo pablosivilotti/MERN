@@ -66,41 +66,41 @@ function login(req, res) {
 
     if (!account) return res.status(404).send({ message: 'No existe la cuenta ' + req.body.email })
 
-    else {
-
-      // if (bcrypt.compareSync(req.body.password, account.password)) {
-      //   const payload = {
-      //     id: account.id,
-      //     email: account.email,
-      //   };
-      //   const options = { expiresIn: 2592000 };
-      //   jwt.sign(
-      //     payload,
-      //     key.TOKEN_SECRET,
-      //     options,
-      //     (err, token) => {
-      //       if (err) {
-      //         return res.json({
-      //           success: false,
-      //           token: "There was an error"
-      //         });
-      //       } else {
-      //         return res.json({
-      //           success: true,
-      //           token: token
-      //         });
-      //       }
-      //     })
-      //   console.log("Contraseña ok")
-      // } else {
-      //   return res.status(400).send({ message: "CONTRASEÑA INCORRECTA" });
-      // }
-    //   console.log("account.Password")
-    //   console.log(user.password)
+      console.log("account.Password")
+      console.log(account.password)
+      console.log(req.body.password)
+      
+      if (bcrypt.compareSync(req.body.password, account.password)) {
+        const payload = {
+          id: account.id,
+          email: account.email,
+        };
+        const options = { expiresIn: 2592000 };
+        jwt.sign(
+          payload,
+          key.TOKEN_SECRET,
+          options,
+          (err, token) => {
+            if (err) {
+              return res.json({
+                success: false,
+                token: "There was an error"
+              });
+            } else {
+              return res.json({
+                success: true,
+                token: token
+              });
+            }
+          })
+        console.log("Contraseña ok")
+      } else {
+        return res.status(400).send({ message: "CONTRASEÑA INCORRECTA" });
+      }
     //   // console.log(account)
-      res.status(200).send({ account });
+      // res.status(200).send({ account });
     }
-  })
+  )
 }
 
 function getAccounts(req, res) {
@@ -112,9 +112,15 @@ function getAccounts(req, res) {
   })
 }
 
+function loginGoogle(req, res) {
+    res.send({ message: `LOGIN GOOGLE` })
+
+}
+
 
 module.exports = {
   saveAccount,
   login,
-  getAccounts
+  getAccounts,
+  loginGoogle
 }
