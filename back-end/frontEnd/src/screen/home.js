@@ -1,12 +1,13 @@
 import React from 'react';
+import Menu from '../components/menu';
 import Header from '../components/header';
 import Section from '../components/section';
 import Links from '../components/links';
 import Footer from '../components/footer';
-import Nav from 'react-bootstrap/Nav'
-import { Navbar } from 'react-bootstrap'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import urlServer from '../components/constans'
+// import Nav from 'react-bootstrap/Nav'
+// import { Navbar } from 'react-bootstrap'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
+// import urlServer from '../components/constans'
 
 
 function Home() {
@@ -14,7 +15,7 @@ function Home() {
 
     <div className="Home">
 
-      <Navbar bg="light" variant="light" collapseOnSelect expand="md">
+      {/* <Navbar bg="light" variant="light" collapseOnSelect expand="md">
         <Navbar.Brand className="menu-brand">
           <img
             className="rounded-circle profile-pic-menu"
@@ -38,8 +39,9 @@ function Home() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar> */}
 
+      <Menu/>
       <Header />
       <Section />
       <Links />

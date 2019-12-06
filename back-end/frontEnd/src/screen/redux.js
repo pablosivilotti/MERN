@@ -1,11 +1,12 @@
 import React from 'react';
+import Menu from '../components/menu';
 import Header from '../components/header';
 import CitiesRedux from '../redux/components/CitiesRedux'
 import Footer from '../components/footer';
-import { Navbar } from 'react-bootstrap'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import urlServer from '../components/constans'
+// import { Navbar } from 'react-bootstrap'
+// import Nav from 'react-bootstrap/Nav'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
+// import urlServer from '../components/constans'
 
 
 function Redux() {
@@ -13,7 +14,7 @@ function Redux() {
 
     <div className="Redux">
 
-      <Navbar bg="light" variant="light" collapseOnSelect expand="md">
+      {/* <Navbar bg="light" variant="light" collapseOnSelect expand="md">
         <Navbar.Brand className="menu-brand">
           <img
             className="rounded-circle profile-pic-menu"
@@ -38,8 +39,9 @@ function Redux() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar> */}
 
+      <Menu />
       <Header />
       <CitiesRedux />
       <Footer />

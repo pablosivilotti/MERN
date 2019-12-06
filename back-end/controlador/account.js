@@ -59,19 +59,19 @@ function login(req, res) {
   console.log("req.body")
   console.log(req.body)
 
-  Account.findOne({ email: req.body.email }, (err, user) => {
+  Account.findOne({ email: req.body.email }, (err, account) => {
     console.log("account")
-    console.log(user)
+    console.log(account)
     if (err) res.status(500).send({ message: `Error relizar la consulta a la base de datos: ${err}` })
 
-    if (!user) return res.status(404).send({ message: 'No existe la cuenta ' + req.body.email })
+    if (!account) return res.status(404).send({ message: 'No existe la cuenta ' + req.body.email })
 
     else {
 
-      // if (bcrypt.compareSync(req.body.password, user.password)) {
+      // if (bcrypt.compareSync(req.body.password, account.password)) {
       //   const payload = {
-      //     id: user.id,
-      //     email: user.email,
+      //     id: account.id,
+      //     email: account.email,
       //   };
       //   const options = { expiresIn: 2592000 };
       //   jwt.sign(
@@ -98,7 +98,7 @@ function login(req, res) {
     //   console.log("account.Password")
     //   console.log(user.password)
     //   // console.log(account)
-      res.status(200).send({ user });
+      res.status(200).send({ account });
     }
   })
 }

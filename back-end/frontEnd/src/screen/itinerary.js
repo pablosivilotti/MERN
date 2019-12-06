@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import '../App.css'
+import Menu from '../components/menu';
 import Footer from '../components/footer';
 import LinkCities from '../components/link-Cities';
 import { connect } from "react-redux";
@@ -13,9 +14,9 @@ import Carousel from 'react-bootstrap/Carousel'
 import Expand from 'react-expand-animated';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
-import Nav from 'react-bootstrap/Nav'
-import { Navbar } from 'react-bootstrap'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+// import Nav from 'react-bootstrap/Nav'
+// import { Navbar } from 'react-bootstrap'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
 import urlServer from '../components/constans'
 
 
@@ -48,7 +49,8 @@ class Itinerary extends React.Component {
     return (
 
       <div className="Redux">
-        <Navbar bg="light" variant="light" collapseOnSelect expand="md">
+        
+        {/* <Navbar bg="light" variant="light" collapseOnSelect expand="md">
           <Navbar.Brand className="menu-brand">
             <img
               className="rounded-circle profile-pic-menu"
@@ -72,7 +74,9 @@ class Itinerary extends React.Component {
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> */}
+
+        <Menu/>
 
         {this.props.itineraryReducer[0] != null &&
           <Card>

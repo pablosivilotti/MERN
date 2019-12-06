@@ -1,12 +1,13 @@
 import React from 'react';
+import Menu from '../components/menu';
 import Header from '../components/header';
 import Footer from '../components/footer';
 // import BackEndClient from '../client/client'
 import Cities from '../redux/components/CitiesRedux'
-import Nav from 'react-bootstrap/Nav'
-import { Navbar } from 'react-bootstrap'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import urlServer from '../components/constans'
+// import Nav from 'react-bootstrap/Nav'
+// import { Navbar } from 'react-bootstrap'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
+// import urlServer from '../components/constans'
 
 
 function CitiesBD() {
@@ -14,8 +15,9 @@ function CitiesBD() {
 
     <div className="CitiesBD">
 
+      <Menu/>
       <Header />
-      <Navbar bg="light" variant="light" collapseOnSelect expand="md">
+      {/* <Navbar bg="light" variant="light" collapseOnSelect expand="md">
         <Navbar.Brand className="menu-brand">
           <img
             className="rounded-circle profile-pic-menu"
@@ -42,7 +44,7 @@ function CitiesBD() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar> */}
       {/* <BackEndClient /> */}
       <Cities />
       {/* <Links /> */}

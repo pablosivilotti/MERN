@@ -1,11 +1,12 @@
 import React from 'react';
+import Menu from '../components/menu';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import SectionCities from '../components/section-cities';
-import Nav from 'react-bootstrap/Nav'
-import { Navbar } from 'react-bootstrap'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import urlServer from '../components/constans'
+// import Nav from 'react-bootstrap/Nav'
+// import { Navbar } from 'react-bootstrap'
+// import NavDropdown from 'react-bootstrap/NavDropdown'
+// import urlServer from '../components/constans'
 
 
 
@@ -15,7 +16,7 @@ function Cities() {
 
     <div className="Cities">
 
-      <Navbar bg="light" variant="light" collapseOnSelect expand="md">
+      {/* <Navbar bg="light" variant="light" collapseOnSelect expand="md">
         <Navbar.Brand className="menu-brand">
           <img
             className="rounded-circle profile-pic-menu"
@@ -39,9 +40,9 @@ function Cities() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>
+      </Navbar> */}
 
-
+      <Menu/>
       <Header />
       <SectionCities />
       <Footer />
