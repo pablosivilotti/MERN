@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import cityReducer from './reducers/cityReducer';
 import itineraryReducer from './reducers/itineraryReducer';
 import activityReducer from './reducers/activityReducer';
+import accountReducer from './reducers/accountReducer';
 
 const reducer = combineReducers({
     cityReducer,
     itineraryReducer,
-    activityReducer
+    activityReducer,
+    accountReducer
     //otro_reducer,
 });
 

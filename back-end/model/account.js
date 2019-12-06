@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcryptjs');
 
 
 const AccountSchema = Schema({
@@ -22,19 +22,19 @@ const AccountSchema = Schema({
         country: String
 });
 
-AccountSchema.pre('save', function(next) {
-        let account = this
-        if (account.isModified("password")){
-                bcrypt.genSalt(10, function(err, salt){
-                        bcrypt.hash(account.password, salt, null, function(err, hash){
-                                account.password = hash
-                                next()
-                        })
-                })
-        } else {
-                next()
-        }
+// AccountSchema.pre('save', function(next) {
+//         let account = this
+//         if (account.isModified("password")){
+//                 bcrypt.genSalt(10, function(err, salt){
+//                         bcrypt.hash(account.password, salt, null, function(err, hash){
+//                                 account.password = hash
+//                                 next()
+//                         })
+//                 })
+//         } else {
+//                 next()
+//         }
         
-})
+// })
 
 module.exports = mongoose.model('Account', AccountSchema)

@@ -4,11 +4,11 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
-import { postLogin } from "../redux/actions/loginActions";
+import { login } from "../redux/actions/accountActions";
 
 const initialState = {
     remember: false,
-    username: "",
+    email: "",
     password: "",
 };
 
@@ -31,13 +31,13 @@ class SectionLogin extends React.Component {
             [name]: value
         });
 
-        console.log(this.state)
+        // console.log(this.state)
     }
     
     handleForm(e) {
         if (
             !this.state.remember ||
-            this.state.username === "" ||
+            this.state.email === "" ||
             this.state.password === "" 
             
         ) {
@@ -45,7 +45,7 @@ class SectionLogin extends React.Component {
         }
         e.preventDefault();
     
-        // this.props.addAccount(this.state)
+        this.props.login(this.state)
     
         // this.setState(initialState)
     
@@ -65,9 +65,9 @@ class SectionLogin extends React.Component {
                         <Form.Control
                             type="email"
                             required
-                            name="username"
+                            name="email"
                             placeholder="username"
-                            value={this.state.username}
+                            value={this.state.email}
                             onChange={this.handleInputChange} 
                          />
                     </Form.Group>
@@ -116,8 +116,8 @@ const mapStateToProps = (state) => {
     // console.log("state")
     // console.log(state)
     return {
-        login: state.loginReducer,
+        login: state.accountReducer,
     };
 };
 
-export default connect(mapStateToProps, { postLogin })(SectionLogin);
+export default connect(mapStateToProps, { login })(SectionLogin);
