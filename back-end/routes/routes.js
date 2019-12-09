@@ -6,6 +6,10 @@ const itineraryCtrl = require('../controlador/itinerary')
 const imagesCtrl = require('../controlador/imgCity'); 
 const activityCtrl = require('../controlador/activity'); 
 const accountCtrl = require('../controlador/account'); 
+const passport = require('../passport')
+const Account = require('../model/account');
+
+
 
 const { check, validationResult } = require('express-validator');
 
@@ -30,6 +34,7 @@ api.get('/activities', activityCtrl.getActivities)
 api.post('/activities/', activityCtrl.saveActivity)
 
 api.get('/accounts', accountCtrl.getAccounts)
+api.get('/account', passport.authenticate("jwt", { session: false }), accountCtrl.getAccount)
 api.post('/accounts/', [check('email', 'Invalid Email adress').isEmail(),
                         check('password','Password must be min 5 characters').isLength({ min: 5 })],accountCtrl.saveAccount)
 

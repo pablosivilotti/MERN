@@ -31,7 +31,6 @@ function saveAccount(req, res) {
   account.save((err, accountStored) => {
     if (err) {
       console.log("ERROR: EL EMAIL " + account.email + " YA ESTA REGISTRADO")
-      // console.log("ERROR: EL EMAIL YA ESTA REGISTRADO")
       res.status(500).send({ message: `Error al guardar en la base de datos: ${err}` })
     }
 
@@ -51,11 +50,6 @@ function login(req, res) {
     return res.status(422).json({ errors: errors.array() });
   }
 
-  // let login = new Account()
-  // login.password = req.body.password;
-  // login.email = req.body.email;
-  // login.remember = req.body.remember;
-
   console.log("req.body")
   console.log(req.body)
 
@@ -66,40 +60,40 @@ function login(req, res) {
 
     if (!account) return res.status(404).send({ message: 'No existe la cuenta ' + req.body.email })
 
-      console.log("account.Password")
-      console.log(account.password)
-      console.log(req.body.password)
-      
-      if (bcrypt.compareSync(req.body.password, account.password)) {
-        const payload = {
-          id: account.id,
-          email: account.email,
-        };
-        const options = { expiresIn: 2592000 };
-        jwt.sign(
-          payload,
-          key.TOKEN_SECRET,
-          options,
-          (err, token) => {
-            if (err) {
-              return res.json({
-                success: false,
-                token: "There was an error"
-              });
-            } else {
-              return res.json({
-                success: true,
-                token: token
-              });
-            }
-          })
-        console.log("Contraseña ok")
-      } else {
-        return res.status(400).send({ message: "CONTRASEÑA INCORRECTA" });
-      }
-    //   // console.log(account)
-      // res.status(200).send({ account });
+    console.log("account.Password")
+    console.log(account.password)
+    console.log(req.body.password)
+
+    if (bcrypt.compareSync(req.body.password, account.password)) {
+      const payload = {
+        id: account.id,
+        email: account.email,
+      };
+      const options = { expiresIn: 2592000 };
+      jwt.sign(
+        payload,
+        key.TOKEN_SECRET,
+        options,
+        (err, token) => {
+          if (err) {
+            return res.json({
+              success: false,
+              token: "There was an error"
+            });
+          } else {
+            return res.json({
+              success: true,
+              token: token
+            });
+          }
+        })
+      console.log("Contraseña ok")
+    } else {
+      return res.status(400).send({ message: "CONTRASEÑA INCORRECTA" });
     }
+    //   // console.log(account)
+    // res.status(200).send({ account });
+  }
   )
 }
 
@@ -113,8 +107,28 @@ function getAccounts(req, res) {
 }
 
 function loginGoogle(req, res) {
-    res.send({ message: `LOGIN GOOGLE` })
+  res.send({ message: `LOGIN GOOGLE` })
 
+}
+
+// function getAccount(req, res) {
+//   let accountId = req.user.id
+
+//   Account.findById(accountId, (err, account) => {
+//     if (err) res.status(500).send({ message: `Error relizar la consulta a la base de datos: ${err}` })
+//     if (!account) return res.status(404).send({ message: 'No existen ciudades ' + req.params })
+
+//     res.status(200).send({ account });
+//   })
+// }
+
+function getAccount(req, res) {
+  Account
+    .findOne({ _id: req.user.id })
+    .then(user => {
+      res.json(user);
+    })
+    .catch(err => res.status(404).json({ error: "User does not exist!" }));
 }
 
 
@@ -122,5 +136,6 @@ module.exports = {
   saveAccount,
   login,
   getAccounts,
+  getAccount,
   loginGoogle
 }
