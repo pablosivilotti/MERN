@@ -46,7 +46,7 @@ function login(data) {
 
     return await axios.post(`${urlServer.urlServer}/login`, data)
       .then((res) => {
-        dispatch({ type: 'ADD_ACCOUNT', payload: res.data.account })
+        dispatch({ type: 'LOGIN', payload: res.data.token })
         
         console.log("Login exitoso")
         console.log(res.data)

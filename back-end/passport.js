@@ -14,24 +14,26 @@ opts.secretOrKey = key.TOKEN_SECRET;
 
 module.exports = passport.use(
     new JwtStrategy(opts, (jwt_payload, done) => {
-        User.findById(jwt_payload.id)
+        // User.findById(jwt_payload.id)
+        User.findOne({email: jwt_payload.email })
             .then(user => {
                 if (user) {
                     return done(null, user);
                 }
-                return done(null, false);
+                return done(null, 'false');
             })
-            .catch(err => console.log(err));
+            // .catch(err => console.log(err));
+            .catch(err => done(err,null));
     })
 );
 
-const GOOGLE_CLIENT_ID = key.googleCredentials.ID
-const GOOGLE_CLIENT_SECRET = key.googleCredentials.secret
+const GOOGLE_CLIENT_ID = key.GOOGLE_ID
+const GOOGLE_CLIENT_SECRET = key.GOOGLE_SECRET
 
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/redirect"
+    callbackURL: "/auth/google/login"
 },
     function (accessToken, refreshToken, profile, done) {
         User.findOne({ googleID: profile.id })
@@ -53,12 +55,3 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-    User.findById(id).then((user) => {
-        done(null, user);
-    });
-});

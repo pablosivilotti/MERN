@@ -9,6 +9,8 @@ const accountReducer = (state = [], action) => {
             return state.filter((account) => account.id !== action.id)
         case 'GET_ACCOUNT':
             return [...state,action.payload]
+        case 'LOGIN':
+             return [action.payload.token]
         
         default:
             return state;  //SIEMPRE TIENE QUE ESTAR

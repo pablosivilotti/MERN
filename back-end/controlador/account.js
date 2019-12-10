@@ -69,7 +69,7 @@ function login(req, res) {
         id: account.id,
         email: account.email,
       };
-      const options = { expiresIn: 2592000 };
+      const options = { expiresIn: 25 }; //tiempo para que expire el token (segundos)
       jwt.sign(
         payload,
         key.TOKEN_SECRET,
@@ -124,7 +124,7 @@ function loginGoogle(req, res) {
 
 function getAccount(req, res) {
   Account
-    .findOne({ _id: req.user.id })
+    .findOne({ email: req.user.email })
     .then(user => {
       res.json(user);
     })

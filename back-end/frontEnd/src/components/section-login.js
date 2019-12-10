@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import { login } from "../redux/actions/accountActions";
 import { GoogleLogin } from 'react-google-login';
+// import { Redirect } from 'react-router-dom'
 
 
 const initialState = {
@@ -53,12 +54,13 @@ class SectionLogin extends React.Component {
 
         this.props.login(this.state)
 
-        // this.setState(initialState)
+        this.setState(initialState);
 
     }
 
 
     render() {
+
         return (
 
             <div className="Section-Login">
