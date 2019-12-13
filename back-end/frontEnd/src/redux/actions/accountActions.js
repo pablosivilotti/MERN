@@ -2,63 +2,122 @@ import axios from "axios";
 import urlServer from '../../components/constans'
 
 function addAccount(data) {
-    return async(dispatch, getState) => {
-  
-      if (getState().length > 0) return;
+  return async (dispatch, getState) => {
 
-      return await axios.post(`${urlServer.urlServer}/accounts`,data)
-        .then((res) => {
-          dispatch({ type: 'ADD_ACCOUNT', payload: res.data.account })
-          
-          console.log("CUENTA AGREGADA")
-          console.log(res.data.account)
-        })
-        .catch(err => alert('Error al intentar crear la cuenta!'+ err));
+    if (getState().accountReducer.length > 0) return;
 
-    }
+    return await axios.post(`${urlServer.urlServer}/accounts`, data)
+      .then((res) => {
+        dispatch({ type: 'ADD_ACCOUNT', payload: res.data.account })
+
+        console.log("CUENTA AGREGADA")
+        console.log(res.data.account)
+      })
+      .catch(err => alert('Error al intentar crear la cuenta!' + err));
+
+  }
 }
 
 
 const deleteAccount = payload => ({
-    type: 'DELETE_ACCOUNT',
-    payload: payload
-  })
-  
+  type: 'DELETE_ACCOUNT',
+  payload: payload
+})
+
 function getAccount() {
-    return (dispatch, getState) => {
-  
-      if (getState().length > 0) return;
-  
-      return axios.get(`${urlServer.urlServer}/accounts`)
-        .then((res) => {
-          dispatch({ type: 'GET_ACCOUNT', payload: res.data.account })
-        })
-    }
+  return (dispatch, getState) => {
+
+    if (getState().accountReducer.length > 0) return;
+
+    return axios.get(`${urlServer.urlServer}/accounts`, {
+      headers: {
+        Authorization: 'bearer ' + getState().accountReducer.token 
+      }
+    })
+      .then((res) => {
+        dispatch({ type: 'GET_ACCOUNT', payload: res.data.account })
+      })
+  }
+}
+
+export const currentUser = ()=>{
+  return async (dispatch)=>{
+
+   await axios.get(`${urlServer.urlServer}/current_user`)
+   .then((res)=>{
+      dispatch({type:'CURRENT_USER',payload: res.data})
+      
+      // console.log("USUARIO ACTUAL: ")
+      // console.log(res)
+   })
+
+  }
 }
 
 function login(data) {
 
   // console.log("data accountAction")
   // console.log(data)
-  return async(dispatch, getState) => {
+  return async (dispatch, getState) => {
 
-    if (getState().length > 0) return;
+    if (getState().accountReducer.length > 0) return;
 
     return await axios.post(`${urlServer.urlServer}/login`, data)
       .then((res) => {
-        dispatch({ type: 'LOGIN', payload: res.data.token })
-        
+        dispatch({ type: 'LOGIN', payload: res.data })
+
         console.log("Login exitoso")
         console.log(res.data)
       })
       .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
 
-    }
-}
-  
-  export {
-    addAccount,
-    deleteAccount,
-    getAccount,
-    login
   }
+}
+
+// function loginGoogle(data) {
+
+//   return async (dispatch, getState) => {
+    
+//     console.log("data accountAction")
+//     console.log(data)
+//     if (getState().accountReducer.length > 0) return;
+
+//     return await axios.post(`${urlServer.urlServer}/loginGoogle`, data)
+//       .then((res) => {
+//         dispatch({ type: 'LOGIN_GOOGLE', payload: res.data })
+
+//         console.log("Login exitoso")
+//         console.log(res.data)
+//       })
+//       .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
+
+//   }
+// }
+
+function loginGoogle() {
+
+  return async (dispatch, getState) => {
+    
+    // console.log("data accountAction")
+    // console.log(data)
+    // if (getState().accountReducer.length > 0) return;
+
+    return await axios.get(`${urlServer.urlServer}/loginGoogle`)
+      .then((res) => {
+        dispatch({ type: 'LOGIN_GOOGLE', payload: res.data })
+
+        console.log("Login exitoso")
+        console.log(res.data)
+      })
+      .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
+
+  }
+}
+
+export {
+  addAccount,
+  deleteAccount,
+  getAccount,
+  login,
+  loginGoogle
+}

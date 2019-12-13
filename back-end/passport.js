@@ -33,9 +33,12 @@ const GOOGLE_CLIENT_SECRET = key.GOOGLE_SECRET
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "/auth/google/login"
+    callbackURL: "/auth/google/callback"
+
 },
-    function (accessToken, refreshToken, profile, done) {
+    (accessToken, refreshToken, profile, done) => {
+        console.log('profile', profile)
+ 
         User.findOne({ googleID: profile.id })
             .then((currentUser) => {
                 if (currentUser) {
@@ -43,7 +46,11 @@ passport.use(new GoogleStrategy({
                 } else {
                     new User({
                         googleID: profile.id,
-                        username: profile.displayName
+                        username: profile.displayName,
+                        email: profile._json.email,
+                        photo: profile._json.picture,
+                        firstName: profile.name.givenName,
+                        lastName: profile.name.familyName,
                     })
                         .save()
                         .then((newUser) => {
@@ -51,7 +58,16 @@ passport.use(new GoogleStrategy({
                         }
                         );
                 }
-            })
+            }).catch(err => done(err,null));
+
     }
 ));
+
+passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+  
+passport.deserializeUser(function(user, done) {
+done(null, user);
+});
 

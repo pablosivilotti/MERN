@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
 
 const AccountSchema = Schema({
@@ -18,7 +18,9 @@ const AccountSchema = Schema({
         lastName: String,
         photo: String,
         terms: Boolean,
-        country: String
+        country: String,
+        googleID:String
+
 });
 
 // AccountSchema.pre('save', function(next) {

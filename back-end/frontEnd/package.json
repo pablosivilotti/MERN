@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "jwt-decode": "^2.2.0",
     "mdbreact": "^4.22.0",
     "react": "^16.11.0",
     "react-boostrap-carousel": "^3.0.0",
@@ -16,7 +17,7 @@
     "react-redux": "^7.1.3",
     "react-responsive-carousel": "^3.1.51",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^3.3.0",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"

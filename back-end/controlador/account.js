@@ -50,8 +50,8 @@ function login(req, res) {
     return res.status(422).json({ errors: errors.array() });
   }
 
-  console.log("req.body")
-  console.log(req.body)
+  // console.log("req.body")
+  // console.log(req.body)
 
   Account.findOne({ email: req.body.email }, (err, account) => {
     console.log("account")
@@ -60,9 +60,9 @@ function login(req, res) {
 
     if (!account) return res.status(404).send({ message: 'No existe la cuenta ' + req.body.email })
 
-    console.log("account.Password")
-    console.log(account.password)
-    console.log(req.body.password)
+    // console.log("account.Password")
+    // console.log(account.password)
+    // console.log(req.body.password)
 
     if (bcrypt.compareSync(req.body.password, account.password)) {
       const payload = {
@@ -108,19 +108,8 @@ function getAccounts(req, res) {
 
 function loginGoogle(req, res) {
   res.send({ message: `LOGIN GOOGLE` })
-
+  console.log("LOGIN GOOGLE CONTROLADOR")
 }
-
-// function getAccount(req, res) {
-//   let accountId = req.user.id
-
-//   Account.findById(accountId, (err, account) => {
-//     if (err) res.status(500).send({ message: `Error relizar la consulta a la base de datos: ${err}` })
-//     if (!account) return res.status(404).send({ message: 'No existen ciudades ' + req.params })
-
-//     res.status(200).send({ account });
-//   })
-// }
 
 function getAccount(req, res) {
   Account

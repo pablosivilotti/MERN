@@ -9,13 +9,14 @@ import urlServer from '../components/constans'
 class Menu extends React.Component {
 
     render() {
+        const profilePic = 'profilePic.jpg'
         return (
             <div>
                 <Navbar bg="light" variant="light" collapseOnSelect expand="md">
                     <Navbar.Brand className="menu-brand">
                         <img
                             className="rounded-circle profile-pic-menu"
-                            src={`${urlServer.urlServer}/city/image/profilePic.jpg`}
+                            src={`${urlServer.urlServer}/city/image/${profilePic}`}
                             alt="profile pic"
                         />
                     </Navbar.Brand>

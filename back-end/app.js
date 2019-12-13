@@ -10,8 +10,9 @@ const passport = require ("./passport")
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(cors()) // Use this after the variable declaration
 app.use('/',api)
-app.use(passport.initialize())
 
 module.exports = app
