@@ -42,7 +42,7 @@ api.post('/loginGoogle',
   passport.authenticate('google', { session: false }));
 
 api.get('/loginGoogle',
-  passport.authenticate('google', { scope: ['profile', 'email'] }));
+  passport.authenticate('google', { scope: ['profile'] } , { session: false }));
 
 api.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),

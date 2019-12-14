@@ -69,7 +69,7 @@ function login(req, res) {
         id: account.id,
         email: account.email,
       };
-      const options = { expiresIn: 25 }; //tiempo para que expire el token (segundos)
+      const options = { expiresIn: 25000 }; //tiempo para que expire el token (segundos)
       jwt.sign(
         payload,
         key.TOKEN_SECRET,

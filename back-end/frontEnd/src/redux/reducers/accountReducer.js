@@ -16,9 +16,13 @@ const accountReducer = (state = [], action) => {
         case 'LOGIN':
             // console.log("action.payload LOGIN REDUCER")
             // console.log(action.payload)
+            // DECODIFICAR EL TOKEN Y CREAR UN PERFIL DE USUARIO CON LOS DATOS PARA DESPUES PODER CONECTAR LOS COMPONENTES A ESTE REDUCER Y USARLOS DE CUALQUIER LADO
              return [action.payload.token]
         case 'LOGIN_GOOGLE':
-            console.log('[AccountReducer] got an LOGIN_GOOGLE action!')
+            console.log('[AccountReducer] LOGIN_GOOGLE TOKEN:', action.payload)
+            localStorage.setItem("token", action.payload);
+            console.log("localStorage")
+            console.log(localStorage.token)
             return { ...state, token: action.payload, isAuthenticated: true, errorMessage: '' }
         
         default:

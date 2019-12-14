@@ -1,4 +1,5 @@
 import axios from "axios";
+// import jsonpAdapter from "axios-jsonp";
 import urlServer from '../../components/constans'
 
 function addAccount(data) {
@@ -87,27 +88,29 @@ function login(data) {
 //         dispatch({ type: 'LOGIN_GOOGLE', payload: res.data })
 
 //         console.log("Login exitoso")
-//         console.log(res.data)
+//         console.log(res)
 //       })
 //       .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
 
 //   }
 // }
 
-function loginGoogle() {
+function loginGoogle(token) {
 
   return async (dispatch, getState) => {
     
-    // console.log("data accountAction")
-    // console.log(data)
-    // if (getState().accountReducer.length > 0) return;
+    // console.log("TOKEN GOOGLE ACTION:")
+    // console.log(token)
+    if (getState().accountReducer.length > 0) return;
 
     return await axios.get(`${urlServer.urlServer}/loginGoogle`)
       .then((res) => {
-        dispatch({ type: 'LOGIN_GOOGLE', payload: res.data })
+
+        dispatch({ type: 'LOGIN_GOOGLE', payload: token })
 
         console.log("Login exitoso")
-        console.log(res.data)
+        // console.log("payload")
+        // console.log(res)
       })
       .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
 

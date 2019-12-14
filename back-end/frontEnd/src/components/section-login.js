@@ -30,11 +30,11 @@ class SectionLogin extends React.Component {
     }
 
     responseGoogle(res) {
-        console.log("Response Google");
-        console.log(res);
+        // console.log("Response Google");
+        // console.log(res);
 
         this.props.loginGoogle(res.accessToken)
-        this.props.loginGoogle()
+        // this.props.loginGoogle()
 
     }
     
@@ -69,8 +69,9 @@ class SectionLogin extends React.Component {
 
     render() {
 
-        // console.log("this.props RENDER")
+        console.log("ACCOUNT REDUCER")
         // console.log(this.props.token[0])
+        console.log(this.props.token)
 
         if(this.props.token[0] && new Date(jwtDecode(this.props.token[0]).exp*1000).toLocaleString("es-AR")> new Date().toLocaleString("es-AR") )   return (<Redirect to='/' />)
 
