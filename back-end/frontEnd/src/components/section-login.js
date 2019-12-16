@@ -69,9 +69,9 @@ class SectionLogin extends React.Component {
 
     render() {
 
-        console.log("ACCOUNT REDUCER")
+        // console.log("ACCOUNT REDUCER")
         // console.log(this.props.token[0])
-        console.log(this.props.token)
+        // console.log(this.props.token)
 
         if(this.props.token[0] && new Date(jwtDecode(this.props.token[0]).exp*1000).toLocaleString("es-AR")> new Date().toLocaleString("es-AR") )   return (<Redirect to='/' />)
 

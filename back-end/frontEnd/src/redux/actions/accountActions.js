@@ -1,6 +1,8 @@
 import axios from "axios";
 // import jsonpAdapter from "axios-jsonp";
 import urlServer from '../../components/constans'
+const jwtDecode = require('jwt-decode');
+
 
 function addAccount(data) {
   return async (dispatch, getState) => {
@@ -117,10 +119,15 @@ function loginGoogle(token) {
   }
 }
 
+function decodeToken(token){
+  console.log(jwtDecode(token))
+}
+
 export {
   addAccount,
   deleteAccount,
   getAccount,
   login,
-  loginGoogle
+  loginGoogle,
+  decodeToken
 }

@@ -7,6 +7,8 @@ import '../App.css';
 
 class Section extends React.Component {
     render() {
+            // console.log("token local storage HOME")
+            // console.log(localStorage.getItem('token'))
         return (
             <div className="Section">
                

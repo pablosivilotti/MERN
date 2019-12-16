@@ -4,12 +4,21 @@ import Nav from 'react-bootstrap/Nav'
 import { Navbar } from 'react-bootstrap'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import urlServer from '../components/constans'
+import { connect } from "react-redux";
+import * as actions from "../redux/actions/accountActions";
+
 
 
 class Menu extends React.Component {
-
+    
     render() {
         const profilePic = 'profilePic.jpg'
+        
+        console.log("token local storage MENU")
+        console.log(localStorage.getItem('token'))
+    
+        // this.props.decodeToken(localStorage.getItem('token'))
+        // localStorage.removeItem('token')
         return (
             <div>
                 <Navbar bg="light" variant="light" collapseOnSelect expand="md">
@@ -43,4 +52,13 @@ class Menu extends React.Component {
 
 }
 
-export default Menu;
+// export default Menu;
+const mapStateToProps = (state) => {
+    // console.log("state")
+    // console.log(state)
+    return {
+        token: state.accountReducer,
+    };
+};
+
+export default connect(mapStateToProps, actions )(Menu);
