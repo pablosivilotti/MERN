@@ -4,6 +4,7 @@ import urlServer from '../../components/constans'
 const jwtDecode = require('jwt-decode');
 
 
+
 function addAccount(data) {
   return async (dispatch, getState) => {
 
@@ -77,45 +78,42 @@ function login(data) {
   }
 }
 
-// function loginGoogle(data) {
+// function loginGoogle(dataGoogle) {
 
 //   return async (dispatch, getState) => {
-    
-//     console.log("data accountAction")
-//     console.log(data)
-//     if (getState().accountReducer.length > 0) return;
 
-//     return await axios.post(`${urlServer.urlServer}/loginGoogle`, data)
+//     // if (getState().accountReducer.length > 0) return;
+
+//     return await axios.post(`${urlServer.urlServer}/loginGoogle`, dataGoogle)
 //       .then((res) => {
-//         dispatch({ type: 'LOGIN_GOOGLE', payload: res.data })
+//         // dispatch({ type: 'LOGIN', payload: res.data })
 
 //         console.log("Login exitoso")
-//         console.log(res)
+//         console.log(res.data)
 //       })
 //       .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
 
 //   }
 // }
 
-function loginGoogle(token) {
+function loginGoogle() {
 
   return async (dispatch, getState) => {
     
     // console.log("TOKEN GOOGLE ACTION:")
     // console.log(token)
-    if (getState().accountReducer.length > 0) return;
+    // if (getState().accountReducer.length > 0) return;
 
-    return await axios.get(`${urlServer.urlServer}/loginGoogle`)
+    console.log(`${urlServer.urlServer}/auth/google/callback`)
+    axios.get(`${urlServer.urlServer}/auth/google/callback`)
       .then((res) => {
 
-        dispatch({ type: 'LOGIN_GOOGLE', payload: token })
+        // dispatch({ type: 'LOGIN', payload: res.data })
 
-        console.log("Login exitoso")
-        // console.log("payload")
-        // console.log(res)
+        console.log("Login exitoso GOOGLE")
+        console.log(res)
       })
       .catch(err => alert('USUARIO O CONTRASEÑA INCORRECTOS!'));
-
   }
 }
 

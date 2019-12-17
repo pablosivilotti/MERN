@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom'
 import { connect } from "react-redux";
 import * as actions from "../redux/actions/accountActions";
 // import {login} from "../redux/actions/accountActions";
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
 import { Redirect } from 'react-router-dom'
+import urlServer from '../components/constans'
 const jwtDecode = require('jwt-decode');
+
 
 
 const initialState = {
@@ -30,11 +32,14 @@ class SectionLogin extends React.Component {
     }
 
     responseGoogle(res) {
-        // console.log("Response Google");
-        // console.log(res);
+        console.log("Response Google");
+        console.log(res.w3);
 
-        this.props.loginGoogle(res.accessToken)
+        // fetch("http://localhost:5000/auth/google")
+        // this.props.loginGoogle(res.w3)
         // this.props.loginGoogle()
+        // if(res.accessToken)
+        return <Redirect to={`${urlServer.urlServer}/loginGoogle`} />
 
     }
     
@@ -129,13 +134,19 @@ class SectionLogin extends React.Component {
                     Create Account
                 </Link>
                 <br/><br/>
-                <GoogleLogin
+
+                <Button variant="outline-secondary" type="submit">
+                        {/* <Link to={`${urlServer.urlServer}/loginGoogle`}> Login with Google </Link> */}
+                        <a  href={`${urlServer.urlServer}/loginGoogle`}>Login with Google</a> 
+                </Button>
+                {/* <GoogleLogin
                     clientId="971727407159-8cmaolsh9memlfkb3ped2duihqsa80g1.apps.googleusercontent.com"
                     buttonText="Login with Google"
+                    redirectUri="http://localhost:5000/"
                     onSuccess={this.responseGoogle}
                     onFailure={this.responseGoogle}
                     cookiePolicy={'single_host_origin'}
-                />
+                /> */}
             </div>
         );
 

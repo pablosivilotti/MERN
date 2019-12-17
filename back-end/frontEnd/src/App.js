@@ -7,6 +7,7 @@ import Cities from "./screen/cities";
 import CitiesBD from "./screen/cities-bd";
 import Redux from "./screen/redux";
 import Itinerary from "./screen/itinerary";
+import Profile from "./screen/profile";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cities-bd" component={CitiesBD} />
         <Route path="/list-cities" component={Redux} />
         <Route path="/itineraries/:cityId" component={Itinerary} />
+        <Route path="/profile/:token" component={Profile} />
       </Router>
     </div>
   );

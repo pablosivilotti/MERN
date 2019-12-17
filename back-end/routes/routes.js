@@ -39,17 +39,13 @@ api.post('/login/', [check('email', 'Invalid Email adress').isEmail(),
                     check('password', 'Password must be min 5 characters').isLength({ min: 5 })], accountCtrl.login)
 
 api.post('/loginGoogle',
-  passport.authenticate('google', { session: false }));
+  passport.authenticate('google', { session: false }), accountCtrl.loginGoogle);
 
 api.get('/loginGoogle',
   passport.authenticate('google', { scope: ['profile'] } , { session: false }));
 
 api.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000/');
-  });
+  passport.authenticate('google', { session: false }), accountCtrl.loginGoogle )
 
 api.get('/current_user', (req, res) => { res.send(req.user) })
 
@@ -63,4 +59,3 @@ function authenticateJwt(req, res, next) {
 }
 
 module.exports = api
-

@@ -108,8 +108,42 @@ function getAccounts(req, res) {
 }
 
 function loginGoogle(req, res) {
-  res.send({ message: `LOGIN GOOGLE` })
-  console.log("LOGIN GOOGLE CONTROLADOR")
+ 
+  // console.log(req)
+
+  const payload = {
+    id: req.user._id,
+    username: req.user.username,
+    email: req.user.email,
+    photo: req.user.photo,
+};
+  const options = {expiresIn: 2592000};
+ 
+      jwt.sign(
+      payload,
+      key.TOKEN_SECRET,
+      options,
+      (err, token) => {
+          if(err){
+            console.log("NO REDIRECT")
+
+          return res.json({
+              payload:payload,
+              success: false,
+              token: "There was an error",
+          });
+          }else {
+            console.log("REDIRECT")
+              res.redirect(`http://localhost:3000/profile/${token}`) 
+            //  res.redirect("https://google.com.ar");
+             
+            //  res.redirect(`http://localhost:3000/profile/`) //UNA VEZ DENTRO DE ESTA RUTA ACCEDO AL TOKEN DESDE EL LOCAL_STORAGE 
+          }
+      }
+)
+    // Successful authentication, redirect home.
+    // res.redirect('http://localhost:3000/');
+
 }
 
 function getAccount(req, res) {

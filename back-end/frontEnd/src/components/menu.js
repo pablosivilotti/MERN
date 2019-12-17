@@ -10,7 +10,8 @@ import * as actions from "../redux/actions/accountActions";
 
 
 class Menu extends React.Component {
-    
+
+
     render() {
         const profilePic = 'profilePic.jpg'
         

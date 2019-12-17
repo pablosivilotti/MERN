@@ -40,7 +40,6 @@ function Home() {
           </Nav>
         </Navbar.Collapse>
       </Navbar> */}
-
       <Menu/>
       <Header />
       <Section />
