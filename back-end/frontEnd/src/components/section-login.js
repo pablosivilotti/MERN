@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import * as actions from "../redux/actions/accountActions";
 // import {login} from "../redux/actions/accountActions";
 // import { GoogleLogin } from 'react-google-login';
+import { GoogleLoginButton } from "react-social-login-buttons";
 import { Redirect } from 'react-router-dom'
 import urlServer from '../components/constans'
 const jwtDecode = require('jwt-decode');
@@ -28,20 +29,20 @@ class SectionLogin extends React.Component {
         this.state = initialState;
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.responseGoogle = this.responseGoogle.bind(this);
+        // this.responseGoogle = this.responseGoogle.bind(this);
     }
 
-    responseGoogle(res) {
-        console.log("Response Google");
-        console.log(res.w3);
+    // responseGoogle(res) {
+    //     console.log("Response Google");
+    //     console.log(res.w3);
 
-        // fetch("http://localhost:5000/auth/google")
-        // this.props.loginGoogle(res.w3)
-        // this.props.loginGoogle()
-        // if(res.accessToken)
-        return <Redirect to={`${urlServer.urlServer}/loginGoogle`} />
+    //     // fetch("http://localhost:5000/auth/google")
+    //     // this.props.loginGoogle(res.w3)
+    //     // this.props.loginGoogle()
+    //     // if(res.accessToken)
+    //     return <Redirect to={`${urlServer.urlServer}/loginGoogle`} />
 
-    }
+    // }
     
     handleInputChange(event) {
         const target = event.target;
@@ -66,7 +67,8 @@ class SectionLogin extends React.Component {
         // console.log("this.state")
         // console.log(this.state)
         this.props.login(this.state)
-        this.props.currentUser()
+        // this.props.currentUser()
+
         this.setState(initialState)
         
     }
@@ -74,11 +76,13 @@ class SectionLogin extends React.Component {
 
     render() {
 
-        // console.log("ACCOUNT REDUCER")
-        // console.log(this.props.token[0])
-        // console.log(this.props.token)
-
-        if(this.props.token[0] && new Date(jwtDecode(this.props.token[0]).exp*1000).toLocaleString("es-AR")> new Date().toLocaleString("es-AR") )   return (<Redirect to='/' />)
+        // console.log("SECTION LOGIN")
+        // console.log("this.props.token[0].token", this.props.token[0].token)
+        // console.log(this.props.token[0].token)
+        // console.log(this.props)
+        
+        if(this.props.token[0])
+        if(this.props.token[0].token && new Date(jwtDecode(this.props.token[0].token).exp*1000).toLocaleString("es-AR")> new Date().toLocaleString("es-AR") )   return (<Redirect to={`/profile/${this.props.token[0].token}`} />)
 
         return (
             
@@ -135,10 +139,11 @@ class SectionLogin extends React.Component {
                 </Link>
                 <br/><br/>
 
-                <Button variant="outline-secondary" type="submit">
-                        {/* <Link to={`${urlServer.urlServer}/loginGoogle`}> Login with Google </Link> */}
+                {/* <Button variant="outline-secondary" type="submit">
                         <a  href={`${urlServer.urlServer}/loginGoogle`}>Login with Google</a> 
-                </Button>
+                </Button> */}
+                <GoogleLoginButton onClick={() => window.location=`${urlServer.urlServer}/loginGoogle`} />
+                
                 {/* <GoogleLogin
                     clientId="971727407159-8cmaolsh9memlfkb3ped2duihqsa80g1.apps.googleusercontent.com"
                     buttonText="Login with Google"

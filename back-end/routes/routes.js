@@ -38,8 +38,8 @@ api.post('/accounts/', [check('email', 'Invalid Email adress').isEmail(),
 api.post('/login/', [check('email', 'Invalid Email adress').isEmail(),
                     check('password', 'Password must be min 5 characters').isLength({ min: 5 })], accountCtrl.login)
 
-api.post('/loginGoogle',
-  passport.authenticate('google', { session: false }), accountCtrl.loginGoogle);
+// api.post('/loginGoogle',
+//   passport.authenticate('google', { session: false }), accountCtrl.loginGoogle);
 
 api.get('/loginGoogle',
   passport.authenticate('google', { scope: ['profile'] } , { session: false }));

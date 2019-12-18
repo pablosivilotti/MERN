@@ -64,6 +64,10 @@ class SectionCreateAccount extends React.Component {
 
     render() {
 
+        // localStorage.removeItem("token");
+        // localStorage.removeItem("email");
+        // localStorage.removeItem("photo");
+        
         return (
             <div className="Section-CreateAccount">
 
@@ -178,11 +182,12 @@ class SectionCreateAccount extends React.Component {
                             Terms & Conditions
                         </Link>
                     </Form.Group>
-                    {/* <Link to="/login"> */}
                     <Button variant="outline-secondary" type="submit">
                         OK
                     </Button>
-                    {/* </Link> */}
+                    
+                    <br/><br/>
+                    <Link to="/login"> Login </Link>
                 </Form>
             </div>
         );

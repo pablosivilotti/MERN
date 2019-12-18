@@ -1,10 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import urlServer from '../components/constans'
 import '../App.css';
 
 class Links extends React.Component{
 
-    render(){
+  
+  render(){
+    // console.log("localStorage.getItem('token') LINKSS")
+    // console.log(localStorage.getItem('token'))
+
+    if(localStorage.getItem('token')) return  <Link to={'./logout'}>
+                                                  <img src={`${urlServer.urlServer}/city/image/logout.jpg`} width="25%" alt="logout" />
+                                              </Link>
+    
         return(
           <div className="App-links">
               <p>
