@@ -14,6 +14,7 @@ import Carousel from 'react-bootstrap/Carousel'
 import Expand from 'react-expand-animated';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom'
 // import Nav from 'react-bootstrap/Nav'
 // import { Navbar } from 'react-bootstrap'
 // import NavDropdown from 'react-bootstrap/NavDropdown'
@@ -27,6 +28,8 @@ class Itinerary extends React.Component {
     this.state = {
       open: false,
       clicked: false,
+      fav: false,
+      favIcon: "addFavourite.png"
     }
   };
 
@@ -40,6 +43,16 @@ class Itinerary extends React.Component {
     this.props.getActivity(id)
   }
 
+  onClickFav() {
+    this.setState(() => ({ fav: !this.state.fav }));
+
+    if (this.state.fav === true) {
+      this.setState(() => ({ favIcon: "favorite.png" }));
+    }
+    else
+      this.setState(() => ({ favIcon: "addFavourite.png" }));
+
+  }
 
   render() {
     // console.log("this.props")
@@ -49,34 +62,8 @@ class Itinerary extends React.Component {
     return (
 
       <div className="Redux">
-        
-        {/* <Navbar bg="light" variant="light" collapseOnSelect expand="md">
-          <Navbar.Brand className="menu-brand">
-            <img
-              className="rounded-circle profile-pic-menu"
-              src={`${urlServer.urlServer}/city/image/profilePic.jpg`}
-              alt="profile pic"
-            />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav.Item>
-              <Nav.Link href="/" > Home </Nav.Link>
-            </Nav.Item>
-            <Nav className="mr-auto">
-              <Nav.Link href="/list-cities" > Cities</Nav.Link>
-              <Nav.Item>
-                <Nav.Link href="/cities" > Album </Nav.Link>
-              </Nav.Item>
-              <NavDropdown title="Account" id="nav-dropdown">
-                <NavDropdown.Item href="/login" >Log in</NavDropdown.Item>
-                <NavDropdown.Item href="/createAccount" >Create Account</NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar> */}
 
-        <Menu/>
+        <Menu />
 
         {this.props.itineraryReducer[0] != null &&
           <Card>
@@ -93,7 +80,7 @@ class Itinerary extends React.Component {
           .map(function (itineraries, index) {
             return (
 
-              <Accordion key={index}>
+              <Accordion key={itineraries._id}>
                 <Card className="CardItin">
                   <Media >
                     <img
@@ -102,9 +89,43 @@ class Itinerary extends React.Component {
                       alt="profile pic"
                     />
                     <Media.Body className="Media-Itin">
-                      <h5>{itineraries.title}</h5>
-                      <h6> {"Likes: " + itineraries.rating + "     " + itineraries.duration + " Hs       $" + itineraries.price} </h6>
-                      <h6> {itineraries.hashtag} </h6>
+                      <div className="col-xs-9 flex-column mb-0  d-flex justify-content-around" >
+                        {/* <div> */}
+                          <div className="col-xs-5 p-3 bd-highlight font-weight-bold"   >
+                            <span>{itineraries.title}</span>
+                            <span  className="Favourite-icon-span" >
+                              <Link to={'#'} onClick={() => { that.onClickFav() }}>
+                                <img
+                                  className="Favourite-icon"
+                                  src={`${urlServer.urlServer}/city/image/${that.state.favIcon}`}
+                                  alt="favourite icon"
+                                  />
+                              </Link>
+                            </span>
+                          {/* </div> */}
+                          {/* <div className="col-xs-3 float-right">
+                            <Link to={'#'} onClick={() => { that.onClickFav() }}>
+                              <img
+                                className="Favourite-icon"
+                                src={`${urlServer.urlServer}/city/image/${that.state.favIcon}`}
+                                alt="favourite icon"
+                              />
+                            </Link>
+                          </div> */}
+                        </div>
+                      </div>
+                      <div className="p-3 d-flex justify-content-around">
+                        <span >Likes: {itineraries.rating}</span>
+                        <span >{itineraries.duration} hs</span>
+                        <span >$ {itineraries.price}</span>
+                      </div>
+                      <div className="p-3 d-flex justify-content-around">
+                        {itineraries.hashtag.map(function (hashtags, index) {
+                          return (
+                            <span key={index}>{hashtags}</span>
+                          );
+                        })}
+                      </div>
                       <Media.Body onClick={() => that.clicAccordion(itineraries._id)}>
 
                         <Media.Body className="ViewAllAccordion" onClick={() => { that.clicAccordion(itineraries._id) }}> View All </Media.Body>
@@ -126,6 +147,7 @@ class Itinerary extends React.Component {
                             <Form.Label>Comments</Form.Label>
                             <Form.Control type="comment" placeholder="Your comment.." />
                           </Form>
+                          <br />
                           <Button className="CloseActivities" onClick={() => { that.clicAccordion(itineraries._id) }}> Close </Button>
                           {/* <Media.Body onClick={()=>{that.clicAccordion(itineraries._id)}}> Close </Media.Body> */}
                         </Expand>

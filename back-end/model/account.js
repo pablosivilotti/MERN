@@ -19,7 +19,11 @@ const AccountSchema = Schema({
         photo: String,
         terms: Boolean,
         country: String,
-        googleID:String
+        googleID:String,
+        favouritesItin: {
+                type: Schema.Types.ObjectId,
+                ref: "Itinerary" 
+           }
 
 });
 

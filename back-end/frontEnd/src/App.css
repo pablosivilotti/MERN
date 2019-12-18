@@ -179,5 +179,15 @@
 .createAccountPhoto{
 width: 40%;
 border: 2px solid black;
+}
 
+.Favourite-icon-span{
+  display: flex;
+  /* flex: 1; */
+  text-align: right;
+  /* white-space: nowrap;   */
+}
+
+.Favourite-icon{
+  width: 15%;
 }

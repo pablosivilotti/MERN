@@ -16,15 +16,22 @@ const accountReducer = (state = [], action) => {
             localStorage.setItem("email", tokenDecode.email);
             localStorage.setItem("photo", tokenDecode.photo);
 
-            return [action.payload]
+            return { ...state, payload: action.payload, isAuthenticated: true }
         case 'LOGIN_GOOGLE':
             var tokenDecodeG = jwtDecode(action.payload)
 
             localStorage.setItem("token", action.payload);
             localStorage.setItem("email", tokenDecodeG.email);
             localStorage.setItem("photo", tokenDecodeG.photo);
-            
-            return [action.payload]
+
+            return { ...state, payload: action.payload, isAuthenticated: true }
+        case LOGOUT:
+            localStorage.removeItem("token");
+            localStorage.removeItem("email");
+            localStorage.removeItem("photo");
+            return {...state, token: null, isAuthenticated: false};
+        case ADD_FAV:
+            return {...state}
         default:
             return state;  //SIEMPRE TIENE QUE ESTAR
     }
