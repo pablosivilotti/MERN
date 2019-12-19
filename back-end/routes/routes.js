@@ -23,6 +23,7 @@ api.delete('/city/:cityId', cityCtrl.deleteCity)
 api.get('/itineraries', itineraryCtrl.getItineraries)
 api.get('/itineraries/:cityId', itineraryCtrl.getItinerary)
 api.post('/itineraries/', itineraryCtrl.saveItinerary)
+api.post('/itinerariesFav/', itineraryCtrl.UpdateItinerary)
 
 api.get('/city/image/:cityId?', imagesCtrl.getImgCity)
 

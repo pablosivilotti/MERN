@@ -64,8 +64,38 @@ function saveItinerary(req, res) {
   });
 }
 
+function UpdateItinerary(req, res){
+console.log("ID: ", req.body.idItinerario)
+console.log("USER: ", req.body.usuario)
+console.log("ESTADO: ", req.body.estado)
+var usuario = req.body.usuario
+var estado = req.body.estado
+
+let itinerary = new Itinerary()
+  
+itinerary.updateOne({ title: "Tappa Till You Droppa" },
+      {
+          title: "cualquier cosa"
+      }
+    // {
+    //   $set: {
+    //           userFav: {usuario},
+    //           estado: {estado}  
+    //         }
+    // }
+  )
+
+// Update the document using `updateOne()`
+// await CharacterModel.updateOne({ name: 'Jon Snow' }, {
+//   title: 'King in the North'
+// });
+
+
+}
+
 module.exports = {
   getItinerary,
   getItineraries,
-  saveItinerary
+  saveItinerary,
+  UpdateItinerary
 };

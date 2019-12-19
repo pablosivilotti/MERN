@@ -9,7 +9,9 @@ const itineraryReducer = (state = [], action) => {
             return state.filter((itinerary) => itinerary.id !== action.id)
         case 'GET_ITINERARIES':
             return [action.payload]
-        
+        case 'ADD_FAV':
+            console.log("FAV REDUCER: ", action.payload)
+            return [...state,action.payload]
         default:
             return state;  //SIEMPRE TIENE QUE ESTAR
     }

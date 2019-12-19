@@ -27,7 +27,28 @@ function getItineraries(cityId) {
   }
 }
 
+function addItineraryFav(json){
+  console.log("ACTION FAV")
+  console.log(json)
+ 
+  return async (dispatch, getState) => {
+
+        return await axios.post(`${urlServer.urlServer}/itinerariesFav/`, json)
+        .then((res) => {
+          
+          console.log("res.data FAV")
+          console.log(res.data)
+          dispatch({ type: 'ADD_FAV', payload: res.data.itinerary })
+
+        }).catch(console.log("ERROR FAV"));
+
+}
+}
+  
 
 export {
-  addItinerary, deleteItinerary, getItineraries
+  addItinerary,
+  deleteItinerary, 
+  getItineraries,
+  addItineraryFav
 }

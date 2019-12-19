@@ -64,12 +64,9 @@ class CitiesRedux extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log("state")
-  // console.log(state)
+
   return {
     cities: state.cityReducer,
-    // Itineraries: state.itinerariesReducer
-    //otro_reducer: state.otro_reducer ,
   };
 };
 

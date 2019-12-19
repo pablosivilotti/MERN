@@ -23,7 +23,12 @@ const ItinerarySchema = Schema({
     cityId: {
          type: Schema.Types.ObjectId,
          ref: "City" 
-    }
+    },
+    userFav:
+    {
+        type: Schema.Types.ObjectId,
+        ref: "Account" 
+   }
 });
 
 module.exports = mongoose.model('Itinerary', ItinerarySchema)

@@ -6,6 +6,7 @@ import Footer from '../components/footer';
 import LinkCities from '../components/link-Cities';
 import { connect } from "react-redux";
 import { getItineraries } from "../redux/actions/itineraryActions";
+import { addItineraryFav } from "../redux/actions/itineraryActions";
 import { getActivity } from "../redux/actions/activityActions";
 import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
@@ -43,8 +44,14 @@ class Itinerary extends React.Component {
     this.props.getActivity(id)
   }
 
-  onClickFav() {
+  onClickFav( itinID ) {
     this.setState(() => ({ fav: !this.state.fav }));
+    console.log("ITIN_ID: ", itinID)
+    console.log("USER: ", localStorage.getItem("email"))
+
+    var json = {idItinerario: itinID, usuario: localStorage.getItem("email"), estado: this.state.fav}
+    
+    this.props.addItineraryFav(json)
 
     if (this.state.fav === true) {
       this.setState(() => ({ favIcon: "favorite.png" }));
@@ -56,7 +63,7 @@ class Itinerary extends React.Component {
 
   render() {
     // console.log("this.props")
-    // console.log(this)
+    // console.log(this.props)
     let that = this;
 
     return (
@@ -94,7 +101,7 @@ class Itinerary extends React.Component {
                           <div className="col-xs-5 p-3 bd-highlight font-weight-bold"   >
                             <span>{itineraries.title}</span>
                             <span  className="Favourite-icon-span" >
-                              <Link to={'#'} onClick={() => { that.onClickFav() }}>
+                              <Link to={'#'} onClick={() => { that.onClickFav(itineraries._id ) }}>
                                 <img
                                   className="Favourite-icon"
                                   src={`${urlServer.urlServer}/city/image/${that.state.favIcon}`}
@@ -171,9 +178,10 @@ class Itinerary extends React.Component {
 const mapStateToProps = state => {
   return {
     itineraryReducer: state.itineraryReducer,
-    activityReducer: state.activityReducer
+    activityReducer: state.activityReducer,
+    accountReducer: state.accountReducer
     //otro_reducer: state.otro_reducer ,
   };
 };
 
-export default connect(mapStateToProps, { getItineraries, getActivity })(Itinerary);
+export default connect(mapStateToProps, { getItineraries, getActivity, addItineraryFav })(Itinerary);

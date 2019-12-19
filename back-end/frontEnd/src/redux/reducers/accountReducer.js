@@ -25,13 +25,13 @@ const accountReducer = (state = [], action) => {
             localStorage.setItem("photo", tokenDecodeG.photo);
 
             return { ...state, payload: action.payload, isAuthenticated: true }
-        case LOGOUT:
-            localStorage.removeItem("token");
-            localStorage.removeItem("email");
-            localStorage.removeItem("photo");
-            return {...state, token: null, isAuthenticated: false};
-        case ADD_FAV:
-            return {...state}
+        // case LOGOUT:
+        //     localStorage.removeItem("token");
+        //     localStorage.removeItem("email");
+        //     localStorage.removeItem("photo");
+        //     return {...state, token: null, isAuthenticated: false};
+        // case ADD_FAV:
+        //     return {...state}
         default:
             return state;  //SIEMPRE TIENE QUE ESTAR
     }

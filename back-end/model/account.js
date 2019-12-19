@@ -19,12 +19,11 @@ const AccountSchema = Schema({
         photo: String,
         terms: Boolean,
         country: String,
-        googleID:String,
-        favouritesItin: {
-                type: Schema.Types.ObjectId,
-                ref: "Itinerary" 
-           }
-
+        googleID:String
+        // favouritesItin: {
+        //         type: Schema.Types.ObjectId,
+        //         ref: "Itinerary" 
+        //    }
 });
 
 // AccountSchema.pre('save', function(next) {
