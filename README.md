@@ -28,29 +28,32 @@ Tener instalado [Node.js](https://nodejs.org/en/) en tu máquina
 
 2. Primero clonamos el repositorio o lo descargamos:
 
- `git clone https://github.com/pablosivilotti/MERN.git`
+   `git clone https://github.com/pablosivilotti/MERN.git`
 
 3. Nos movemos a la carpeta "back-end" del repositorio:
 
- `cd MERN/back-end/`
+   `cd MERN/back-end/`
 
 4. Instalamos las dependencias:
 
- `npm i`
+   `npm i`
 
 5. Nos movemos ahora a la carpeta "frontEnd" del repositorio: 
 
- `cd frontEnd`
+   `cd frontEnd`
 
 6. Instalamos las dependencias:
 
- `npm i`
+   `npm i`
 
 7. Volvemos a la carpeta "back-end":
 
-`cd ..`
+  `cd ..`
 
 8. Corremos el entorno de desarrollo:
 
- `npm run dev`
+   `npm run dev`
+   
+   
+###### Automáticamente se abrirá una ventana del navegador con la App en ejecución!
 
