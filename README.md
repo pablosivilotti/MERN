@@ -48,7 +48,7 @@ Tener instalado [Node.js](https://nodejs.org/en/) en tu máquina
 
 7. Volvemos a la carpeta "back-end":
 
-  `cd ..`
+   `cd ..`
 
 8. Corremos el entorno de desarrollo:
 
