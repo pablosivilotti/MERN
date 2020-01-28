@@ -42,7 +42,15 @@ Tener instalado [Node.js](https://nodejs.org/en/) en tu máquina
 
  `cd frontEnd`
 
-6. Corremos el entorno de desarrollo:
+6. Instalamos las dependencias:
+
+ `npm i`
+
+7. Volvemos a la carpeta "back-end":
+
+`cd ..`
+
+8. Corremos el entorno de desarrollo:
 
  `npm run dev`
 
